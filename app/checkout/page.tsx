@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { useRole } from '@/context/RoleContext';
-import { Check, ShieldCheck, ArrowRight, CreditCard, Smartphone, Building, Truck } from 'lucide-react';
+import { Check, ShieldCheck, ArrowRight, CreditCard, Smartphone, Building, Truck, Lock, Loader2 } from 'lucide-react';
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -12,6 +12,7 @@ export default function CheckoutPage() {
   const { user } = useRole();
 
   const [step, setStep] = useState<'address' | 'delivery' | 'payment' | 'review'>('address');
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const [shippingAddress, setShippingAddress] = useState({
     name: user.name || 'Vikramaditya Sharma',
@@ -25,9 +26,13 @@ export default function CheckoutPage() {
 
   const [paymentMethod, setPaymentMethod] = useState<'upi' | 'card' | 'netbanking' | 'cod'>('upi');
 
-  const handleCompleteOrder = () => {
-    clearCart();
-    router.push('/order-confirmation');
+  const handlePlaceOrder = () => {
+    setIsProcessing(true);
+    setTimeout(() => {
+      clearCart();
+      setIsProcessing(false);
+      router.push('/order-confirmation');
+    }, 1200);
   };
 
   const steps = [
@@ -38,11 +43,14 @@ export default function CheckoutPage() {
   ];
 
   return (
-    <div className="bg-white min-h-screen pb-20 pt-8">
+    <div className="bg-white text-neutral-900 min-h-screen pb-20 pt-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="pb-4 mb-8 border-b border-neutral-200">
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B]">Secure Express Checkout</span>
-          <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">Checkout Wizard</h1>
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B] flex items-center space-x-1">
+            <Lock className="w-3.5 h-3.5" />
+            <span>256-Bit Encrypted Express Checkout</span>
+          </span>
+          <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">Complete Your Order</h1>
         </div>
 
         {/* Step Indicator Header */}
@@ -52,7 +60,7 @@ export default function CheckoutPage() {
               key={st.key}
               className={`p-3 text-xs font-bold uppercase tracking-wider text-center border transition-colors ${
                 step === st.key
-                  ? 'bg-neutral-900 text-white border-neutral-900'
+                  ? 'bg-[#D9234B] text-white border-[#D9234B] shadow-sm'
                   : 'bg-neutral-50 text-neutral-500 border-neutral-200'
               }`}
             >
@@ -65,7 +73,7 @@ export default function CheckoutPage() {
           {/* Main Wizard Step Container */}
           <div className="lg:col-span-2 space-y-6">
             {step === 'address' && (
-              <div className="bg-white border border-neutral-200 p-6 space-y-4 text-xs">
+              <div className="bg-white border border-neutral-200 p-6 space-y-4 text-xs shadow-sm">
                 <h3 className="font-serif font-bold text-lg text-neutral-900 pb-2 border-b border-neutral-200">
                   Shipping &amp; Delivery Address
                 </h3>
@@ -127,7 +135,7 @@ export default function CheckoutPage() {
 
                 <button
                   onClick={() => setStep('delivery')}
-                  className="w-full py-3 bg-[#D9234B] text-white font-bold uppercase tracking-wider hover:bg-[#9E1B32] transition-colors"
+                  className="w-full py-3.5 bg-[#D9234B] text-white font-bold uppercase tracking-wider hover:bg-[#9E1B32] transition-colors shadow-md"
                 >
                   Continue to Delivery Mode →
                 </button>
@@ -135,30 +143,30 @@ export default function CheckoutPage() {
             )}
 
             {step === 'delivery' && (
-              <div className="bg-white border border-neutral-200 p-6 space-y-4 text-xs">
+              <div className="bg-white border border-neutral-200 p-6 space-y-4 text-xs shadow-sm">
                 <h3 className="font-serif font-bold text-lg text-neutral-900 pb-2 border-b border-neutral-200">
                   Select Delivery Mode
                 </h3>
                 <div className="space-y-3">
-                  <div className="p-4 border border-[#D9234B] bg-rose-50/50 flex justify-between items-center">
+                  <div className="p-4 border-2 border-[#D9234B] bg-rose-50/50 flex justify-between items-center">
                     <div>
-                      <span className="font-bold text-neutral-900 block">Express Freight Dispatch</span>
-                      <span className="text-neutral-500">2 - 4 Business Days Delivery across India</span>
+                      <span className="font-bold text-neutral-900 block text-sm">Express Freight Dispatch</span>
+                      <span className="text-neutral-600">2 - 4 Business Days Insured Delivery across India</span>
                     </div>
-                    <span className="font-bold text-emerald-700 uppercase">INCLUDED</span>
+                    <span className="font-bold text-[#D9234B] uppercase text-xs">FREE / INCLUDED</span>
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex gap-2 pt-2">
                   <button
                     onClick={() => setStep('address')}
-                    className="w-1/3 py-3 border border-neutral-300 text-neutral-700 font-bold uppercase"
+                    className="w-1/3 py-3 border border-neutral-300 text-neutral-700 font-bold uppercase hover:bg-neutral-100"
                   >
                     Back
                   </button>
                   <button
                     onClick={() => setStep('payment')}
-                    className="w-2/3 py-3 bg-[#D9234B] text-white font-bold uppercase tracking-wider hover:bg-[#9E1B32]"
+                    className="w-2/3 py-3.5 bg-[#D9234B] text-white font-bold uppercase tracking-wider hover:bg-[#9E1B32] shadow-md"
                   >
                     Continue to Payment →
                   </button>
@@ -167,17 +175,14 @@ export default function CheckoutPage() {
             )}
 
             {step === 'payment' && (
-              <div className="bg-white border border-neutral-200 p-6 space-y-4 text-xs">
+              <div className="bg-white border border-neutral-200 p-6 space-y-5 text-xs shadow-sm">
                 <h3 className="font-serif font-bold text-lg text-neutral-900 pb-2 border-b border-neutral-200">
-                  Mock Payment Method
+                  Select Payment Option
                 </h3>
-                <div className="p-3 bg-amber-50 border border-amber-200 text-amber-900 text-[11px]">
-                  <strong>FRONTEND DEMO ONLY:</strong> No real money will be charged. Select any mock option below.
-                </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   {[
-                    { key: 'upi', label: 'UPI / QR Code (GPay, PhonePe, Paytm)', icon: <Smartphone className="w-4 h-4 text-[#D9234B]" /> },
+                    { key: 'upi', label: 'UPI / QR Code (GPay, PhonePe, Paytm, BHIM)', icon: <Smartphone className="w-4 h-4 text-[#D9234B]" /> },
                     { key: 'card', label: 'Credit / Debit Card (Visa, Mastercard, RuPay)', icon: <CreditCard className="w-4 h-4 text-blue-600" /> },
                     { key: 'netbanking', label: 'Net Banking (HDFC, SBI, ICICI, Axis)', icon: <Building className="w-4 h-4 text-emerald-600" /> },
                     { key: 'cod', label: 'Cash on Delivery (COD)', icon: <Truck className="w-4 h-4 text-neutral-700" /> },
@@ -187,8 +192,8 @@ export default function CheckoutPage() {
                       onClick={() => setPaymentMethod(pm.key as any)}
                       className={`w-full text-left flex items-center justify-between p-3.5 border transition-colors ${
                         paymentMethod === pm.key
-                          ? 'border-[#D9234B] bg-rose-50/50 font-bold text-neutral-900'
-                          : 'border-neutral-200 bg-neutral-50 text-neutral-700 hover:border-neutral-400'
+                          ? 'border-[#D9234B] bg-rose-50/50 font-bold text-neutral-900 shadow-sm'
+                          : 'border-neutral-200 bg-white text-neutral-700 hover:border-neutral-300'
                       }`}
                     >
                       <div className="flex items-center space-x-3">
@@ -203,13 +208,13 @@ export default function CheckoutPage() {
                 <div className="flex gap-2 pt-2">
                   <button
                     onClick={() => setStep('delivery')}
-                    className="w-1/3 py-3 border border-neutral-300 text-neutral-700 font-bold uppercase"
+                    className="w-1/3 py-3 border border-neutral-300 text-neutral-700 font-bold uppercase hover:bg-neutral-100"
                   >
                     Back
                   </button>
                   <button
                     onClick={() => setStep('review')}
-                    className="w-2/3 py-3 bg-[#D9234B] text-white font-bold uppercase tracking-wider hover:bg-[#9E1B32]"
+                    className="w-2/3 py-3.5 bg-[#D9234B] text-white font-bold uppercase tracking-wider hover:bg-[#9E1B32] shadow-md"
                   >
                     Review Order →
                   </button>
@@ -218,27 +223,39 @@ export default function CheckoutPage() {
             )}
 
             {step === 'review' && (
-              <div className="bg-white border border-neutral-200 p-6 space-y-4 text-xs">
+              <div className="bg-white border border-neutral-200 p-6 space-y-5 text-xs shadow-sm">
                 <h3 className="font-serif font-bold text-lg text-neutral-900 pb-2 border-b border-neutral-200">
                   Review &amp; Place Order
                 </h3>
                 <div className="p-4 bg-neutral-50 border border-neutral-200 space-y-2">
                   <p><strong>Deliver To:</strong> {shippingAddress.name}, {shippingAddress.street}, {shippingAddress.city}, {shippingAddress.state} - {shippingAddress.pincode}</p>
-                  <p><strong>Payment Mode:</strong> <span className="uppercase font-bold text-[#D9234B]">{paymentMethod}</span></p>
+                  <p><strong>Contact Phone:</strong> {shippingAddress.phone}</p>
+                  <p><strong>Payment Option:</strong> <span className="uppercase font-bold text-[#D9234B]">{paymentMethod}</span></p>
                 </div>
 
                 <button
-                  onClick={handleCompleteOrder}
-                  className="w-full py-4 bg-[#D9234B] text-white font-bold uppercase tracking-[0.2em] hover:bg-[#9E1B32] shadow-xl"
+                  disabled={isProcessing}
+                  onClick={handlePlaceOrder}
+                  className="w-full py-4 bg-[#D9234B] text-white font-bold uppercase tracking-[0.2em] hover:bg-[#9E1B32] shadow-xl flex items-center justify-center space-x-2 disabled:opacity-50"
                 >
-                  Place Mock Order (₹{total.toLocaleString('en-IN')})
+                  {isProcessing ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin text-white" />
+                      <span>Processing Order...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Place Order (₹{total.toLocaleString('en-IN')})</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </div>
             )}
           </div>
 
           {/* Right Order Summary Column */}
-          <div className="p-6 bg-neutral-50 border border-neutral-200 h-fit space-y-4 text-xs">
+          <div className="p-6 bg-neutral-50 border border-neutral-200 h-fit space-y-4 text-xs shadow-sm">
             <h3 className="font-serif font-bold text-base text-neutral-900 pb-2 border-b border-neutral-200">
               Bag Items ({cart.length})
             </h3>

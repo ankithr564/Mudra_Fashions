@@ -38,6 +38,11 @@ export const Navbar: React.FC = () => {
     return 'text-neutral-800 hover:text-[#D9234B] font-semibold pb-1 transition-colors';
   };
 
+  // Do not render storefront Navbar when inside Admin Panel routes
+  if (pathname.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <>
       {/* 1. Flowing Right-to-Left Ticker Announcement Bar */}

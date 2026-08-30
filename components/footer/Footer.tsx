@@ -3,9 +3,16 @@
 import React from 'react';
 import Link from 'next/link';
 import { MudraLogo } from '@/components/brand/MudraLogo';
+import { usePathname } from 'next/navigation';
 import { Mail, Phone, MapPin, ArrowRight, ShieldCheck, CreditCard, Award, Truck } from 'lucide-react';
 
 export const Footer: React.FC = () => {
+  const pathname = usePathname();
+
+  if (pathname.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <footer className="bg-white text-neutral-900 pt-16 pb-8 border-t border-neutral-200">
       {/* Brand Value Pillars */}
