@@ -9,7 +9,7 @@ export default function AdminCategoriesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between pb-4 border-b border-neutral-300">
         <div>
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B]">Structure</span>
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A]">Structure</span>
           <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">Product Categories ({CATEGORIES.length})</h1>
         </div>
       </div>
@@ -21,7 +21,7 @@ export default function AdminCategoriesPage() {
               <Image src={cat.image} alt={cat.name} fill className="object-cover" />
             </div>
             <div>
-              <span className="text-[10px] uppercase font-bold text-[#D9234B]">{cat.itemCount} Designs</span>
+              <span className="text-[10px] uppercase font-bold text-[#C4A35A]">{cat.itemCount} Designs</span>
               <h3 className="font-serif text-lg font-bold text-neutral-900">{cat.name}</h3>
               <p className="text-xs text-neutral-500 line-clamp-2 mt-1">{cat.description}</p>
             </div>

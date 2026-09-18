@@ -23,12 +23,12 @@ export default function AdminPricingPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between pb-4 border-b border-neutral-300">
         <div>
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B]">Batch Pricing</span>
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A]">Batch Pricing</span>
           <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">Retail vs Wholesale Tier Rates</h1>
         </div>
         <button
           onClick={handleSaveAll}
-          className="px-4 py-2 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 hover:bg-[#9E1B32]"
+          className="px-4 py-2 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 hover:bg-[#A8893D]"
         >
           {savedMsg ? <Check className="w-4 h-4" /> : null}
           <span>{savedMsg ? 'Saved All Changes!' : 'Save Pricing Matrix'}</span>
@@ -58,7 +58,7 @@ export default function AdminPricingPage() {
                       type="number"
                       value={prod.price}
                       onChange={(e) => handlePriceChange(prod.id, 'price', parseInt(e.target.value) || 0)}
-                      className="w-24 p-1 border border-neutral-300 font-semibold focus:outline-none focus:border-[#D9234B]"
+                      className="w-24 p-1 border border-neutral-300 font-semibold focus:outline-none focus:border-[#C4A35A]"
                     />
                   </td>
                   <td className="p-3">
@@ -66,7 +66,7 @@ export default function AdminPricingPage() {
                       type="number"
                       value={wsPrice}
                       onChange={(e) => handlePriceChange(prod.id, 'wholesalePrice', parseInt(e.target.value) || 0)}
-                      className="w-24 p-1 border border-neutral-300 font-bold text-[#D9234B] focus:outline-none focus:border-[#D9234B]"
+                      className="w-24 p-1 border border-neutral-300 font-bold text-[#C4A35A] focus:outline-none focus:border-[#C4A35A]"
                     />
                   </td>
                   <td className="p-3">
@@ -74,7 +74,7 @@ export default function AdminPricingPage() {
                       type="number"
                       value={prod.moq || 20}
                       onChange={(e) => handlePriceChange(prod.id, 'moq', parseInt(e.target.value) || 0)}
-                      className="w-20 p-1 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-20 p-1 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     />
                   </td>
                   <td className="p-3 font-bold text-emerald-700">{margin}% Margin</td>

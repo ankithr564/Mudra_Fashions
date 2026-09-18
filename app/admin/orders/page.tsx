@@ -21,7 +21,7 @@ export default function AdminOrdersPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-neutral-300">
         <div>
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B]">Order Fulfillment</span>
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A]">Order Fulfillment</span>
           <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">Orders Management ({orders.length})</h1>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default function AdminOrdersPage() {
                 <td className="p-3 text-right">
                   <button
                     onClick={() => setSelectedOrder(ord)}
-                    className="p-1.5 text-neutral-700 hover:text-[#D9234B] font-bold flex items-center space-x-1 ml-auto"
+                    className="p-1.5 text-neutral-700 hover:text-[#C4A35A] font-bold flex items-center space-x-1 ml-auto"
                   >
                     <Eye className="w-4 h-4" />
                     <span>Details</span>
@@ -114,7 +114,7 @@ export default function AdminOrdersPage() {
               ))}
             </div>
 
-            <div className="text-right font-serif font-bold text-base text-[#D9234B]">
+            <div className="text-right font-serif font-bold text-base text-[#C4A35A]">
               Total: ₹{selectedOrder.totalAmount.toLocaleString('en-IN')}
             </div>
           </div>

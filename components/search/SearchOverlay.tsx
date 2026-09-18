@@ -50,27 +50,27 @@ export const SearchOverlay: React.FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="bg-white text-neutral-900 w-full max-w-3xl border border-neutral-200 shadow-2xl overflow-hidden relative"
+          className="bg-[#FBF8F1] text-[#212529] w-full max-w-3xl border border-[#E8E0D0] shadow-2xl overflow-hidden relative"
         >
           {/* Search Bar Input Header */}
-          <div className="p-4 border-b border-neutral-200 flex items-center space-x-3 bg-neutral-50">
-            <Search className="w-5 h-5 text-[#D9234B] flex-shrink-0" />
+          <div className="p-4 border-b border-[#E8E0D0] flex items-center space-x-3 bg-[#FFF9EF]">
+            <Search className="w-5 h-5 text-[#C4A35A] flex-shrink-0" />
             <input
               type="text"
               autoFocus
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search products, fabrics, uniforms, categories..."
-              className="w-full text-base font-serif text-neutral-900 bg-transparent focus:outline-none placeholder-neutral-400"
+              className="w-full text-base font-serif text-[#212529] bg-transparent focus:outline-none placeholder-neutral-400"
             />
             {query && (
-              <button onClick={() => setQuery('')} className="text-xs text-neutral-400 hover:text-neutral-900">
+              <button onClick={() => setQuery('')} className="text-xs text-neutral-400 hover:text-[#212529]">
                 Clear
               </button>
             )}
             <button
               onClick={closeSearch}
-              className="p-1.5 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-200 transition-colors"
+              className="p-1.5 text-neutral-400 hover:text-[#212529] hover:bg-neutral-200 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -88,7 +88,7 @@ export const SearchOverlay: React.FC = () => {
                     <button
                       key={term}
                       onClick={() => setQuery(term)}
-                      className="flex items-center space-x-1.5 px-3 py-1.5 bg-neutral-100 text-neutral-700 hover:bg-rose-50 hover:text-[#D9234B] border border-neutral-200 text-xs font-semibold transition-colors"
+                      className="flex items-center space-x-1.5 px-3 py-1.5 bg-neutral-100 text-[#212529] hover:bg-[#F5F0E5] hover:text-[#C4A35A] border border-[#E8E0D0] text-xs font-semibold transition-colors"
                     >
                       <Tag className="w-3 h-3" />
                       <span>{term}</span>
@@ -107,21 +107,21 @@ export const SearchOverlay: React.FC = () => {
                       key={product.id}
                       href={`/product/${product.slug}`}
                       onClick={closeSearch}
-                      className="flex space-x-3 p-2 border border-neutral-200 hover:border-[#D9234B] bg-white transition-colors group"
+                      className="flex space-x-3 p-2 border border-[#E8E0D0] hover:border-[#C4A35A] bg-[#FBF8F1] transition-colors group"
                     >
                       <div className="relative w-16 h-20 bg-neutral-100 flex-shrink-0">
                         <Image src={product.images[0]} alt={product.name} fill className="object-cover" />
                       </div>
                       <div className="flex-1 flex flex-col justify-between py-0.5">
                         <div>
-                          <span className="text-[10px] text-[#D9234B] font-bold uppercase tracking-wider block">
+                          <span className="text-[10px] text-[#C4A35A] font-bold uppercase tracking-wider block">
                             {product.subcategory}
                           </span>
-                          <h4 className="font-serif text-xs font-bold text-neutral-900 group-hover:text-[#D9234B] line-clamp-1">
+                          <h4 className="font-serif text-xs font-bold text-[#212529] group-hover:text-[#C4A35A] line-clamp-1">
                             {product.name}
                           </h4>
                         </div>
-                        <span className="font-serif text-xs font-bold text-neutral-900">
+                        <span className="font-serif text-xs font-bold text-[#212529]">
                           ₹{product.price.toLocaleString('en-IN')}
                         </span>
                       </div>
@@ -131,15 +131,15 @@ export const SearchOverlay: React.FC = () => {
               </div>
             ) : (
               <div className="text-center py-10">
-                <p className="text-sm font-semibold text-neutral-600 mb-2">No matching products found for &quot;{query}&quot;</p>
+                <p className="text-sm font-semibold text-[#6B7280] mb-2">No matching products found for &quot;{query}&quot;</p>
                 <p className="text-xs text-neutral-400">Try searching for shirts, trousers, fabrics, or uniforms.</p>
               </div>
             )}
           </div>
 
-          <div className="px-6 py-3 bg-neutral-100 border-t border-neutral-200 flex items-center justify-between text-xs text-neutral-500">
-            <span>Press <kbd className="px-1.5 py-0.5 bg-white border border-neutral-300 font-mono text-[10px]">ESC</kbd> to close</span>
-            <Link href="/shop" onClick={closeSearch} className="flex items-center space-x-1 font-bold text-[#D9234B] hover:underline">
+          <div className="px-6 py-3 bg-neutral-100 border-t border-[#E8E0D0] flex items-center justify-between text-xs text-[#6B7280]">
+            <span>Press <kbd className="px-1.5 py-0.5 bg-[#FBF8F1] border border-neutral-300 font-mono text-[10px]">ESC</kbd> to close</span>
+            <Link href="/shop" onClick={closeSearch} className="flex items-center space-x-1 font-bold text-[#C4A35A] hover:underline">
               <span>View All Catalog</span>
               <ArrowRight className="w-3 h-3" />
             </Link>

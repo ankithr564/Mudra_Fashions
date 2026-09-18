@@ -42,15 +42,15 @@ export const WholesaleBulkMatrix: React.FC<WholesaleBulkMatrixProps> = ({
   };
 
   return (
-    <div className="bg-neutral-50 border border-neutral-200 p-5 rounded-none space-y-5">
-      <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
+    <div className="bg-[#FFF9EF] border border-[#E8E0D0] p-5 rounded-none space-y-5">
+      <div className="flex items-center justify-between border-b border-[#E8E0D0] pb-3">
         <div>
-          <span className="text-xs uppercase tracking-wider text-[#D9234B] font-bold">
+          <span className="text-xs uppercase tracking-wider text-[#C4A35A] font-bold">
             B2B Wholesale Ordering Matrix
           </span>
-          <h4 className="font-serif font-bold text-neutral-900 text-lg">
+          <h4 className="font-serif font-bold text-[#212529] text-lg">
             Bulk Pricing: ₹{wholesaleUnitPrice.toLocaleString('en-IN')}{' '}
-            <span className="text-xs font-normal text-neutral-500">/ piece</span>
+            <span className="text-xs font-normal text-[#6B7280]">/ piece</span>
           </h4>
         </div>
         <div className="text-right">
@@ -62,8 +62,8 @@ export const WholesaleBulkMatrix: React.FC<WholesaleBulkMatrixProps> = ({
 
       {/* Color Selection */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-2">
-          Select Bulk Color: <span className="text-neutral-900 font-bold">{selectedColor}</span>
+        <label className="block text-xs font-semibold uppercase tracking-wider text-[#212529] mb-2">
+          Select Bulk Color: <span className="text-[#212529] font-bold">{selectedColor}</span>
         </label>
         <div className="flex flex-wrap gap-2">
           {product.colors.map((c) => (
@@ -72,8 +72,8 @@ export const WholesaleBulkMatrix: React.FC<WholesaleBulkMatrixProps> = ({
               onClick={() => setSelectedColor(c.name)}
               className={`flex items-center space-x-2 px-3 py-1.5 text-xs font-medium border transition-all ${
                 selectedColor === c.name
-                  ? 'border-neutral-900 bg-white ring-1 ring-neutral-900 font-bold'
-                  : 'border-neutral-200 bg-neutral-100 text-neutral-600 hover:border-neutral-400'
+                  ? 'border-neutral-900 bg-[#FBF8F1] ring-1 ring-neutral-900 font-bold'
+                  : 'border-[#E8E0D0] bg-neutral-100 text-[#6B7280] hover:border-neutral-400'
               }`}
             >
               <span className="w-3 h-3 rounded-full border border-black/10" style={{ backgroundColor: c.hex }} />
@@ -85,18 +85,18 @@ export const WholesaleBulkMatrix: React.FC<WholesaleBulkMatrixProps> = ({
 
       {/* Size Quantities Table */}
       <div>
-        <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-2">
+        <label className="block text-xs font-semibold uppercase tracking-wider text-[#212529] mb-2">
           Enter Quantity Per Size:
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
           {product.sizes.map((sz) => (
-            <div key={sz} className="border border-neutral-200 bg-white p-2 text-center">
-              <span className="block text-xs font-bold text-neutral-900 mb-1">{sz}</span>
+            <div key={sz} className="border border-[#E8E0D0] bg-[#FBF8F1] p-2 text-center">
+              <span className="block text-xs font-bold text-[#212529] mb-1">{sz}</span>
               <div className="flex items-center justify-center space-x-1">
                 <button
                   type="button"
                   onClick={() => handleQtyChange(sz, (sizeQuantities[sz] || 0) - 5)}
-                  className="w-6 h-6 bg-neutral-100 text-neutral-700 hover:bg-neutral-200 font-bold text-xs"
+                  className="w-6 h-6 bg-neutral-100 text-[#212529] hover:bg-neutral-200 font-bold text-xs"
                 >
                   -
                 </button>
@@ -106,12 +106,12 @@ export const WholesaleBulkMatrix: React.FC<WholesaleBulkMatrixProps> = ({
                   value={sizeQuantities[sz] || ''}
                   onChange={(e) => handleQtyChange(sz, parseInt(e.target.value) || 0)}
                   placeholder="0"
-                  className="w-12 text-center text-xs font-semibold py-1 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-12 text-center text-xs font-semibold py-1 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
                 <button
                   type="button"
                   onClick={() => handleQtyChange(sz, (sizeQuantities[sz] || 0) + 5)}
-                  className="w-6 h-6 bg-neutral-100 text-neutral-700 hover:bg-neutral-200 font-bold text-xs"
+                  className="w-6 h-6 bg-neutral-100 text-[#212529] hover:bg-neutral-200 font-bold text-xs"
                 >
                   +
                 </button>
@@ -122,9 +122,9 @@ export const WholesaleBulkMatrix: React.FC<WholesaleBulkMatrixProps> = ({
       </div>
 
       {/* MOQ Warning / Order Summary */}
-      <div className="p-3 bg-white border border-neutral-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="p-3 bg-[#FBF8F1] border border-[#E8E0D0] flex flex-wrap items-center justify-between gap-3 text-xs">
         <div>
-          <span className="text-neutral-500">Total Pieces Selected: </span>
+          <span className="text-[#6B7280]">Total Pieces Selected: </span>
           <span className={`font-bold text-sm ${isMoqMet ? 'text-emerald-700' : 'text-amber-600'}`}>
             {totalQuantity} pcs
           </span>
@@ -136,8 +136,8 @@ export const WholesaleBulkMatrix: React.FC<WholesaleBulkMatrixProps> = ({
           )}
         </div>
         <div className="text-right">
-          <span className="text-neutral-500">Estimated Total: </span>
-          <span className="font-serif font-bold text-base text-neutral-900">
+          <span className="text-[#6B7280]">Estimated Total: </span>
+          <span className="font-serif font-bold text-base text-[#212529]">
             ₹{totalPrice.toLocaleString('en-IN')}
           </span>
           <span className="block text-[10px] text-neutral-400">+ 5% GST & Shipping</span>
@@ -151,8 +151,8 @@ export const WholesaleBulkMatrix: React.FC<WholesaleBulkMatrixProps> = ({
           disabled={!isMoqMet}
           className={`flex items-center justify-center space-x-2 py-3 px-4 text-xs font-bold uppercase tracking-wider transition-all ${
             isMoqMet
-              ? 'bg-[#D9234B] text-white hover:bg-[#9E1B32] shadow-md'
-              : 'bg-neutral-300 text-neutral-500 cursor-not-allowed'
+              ? 'bg-[#C4A35A] text-white hover:bg-[#A8893D] shadow-md'
+              : 'bg-neutral-300 text-[#6B7280] cursor-not-allowed'
           }`}
         >
           {addedSuccess ? (

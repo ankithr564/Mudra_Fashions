@@ -91,10 +91,10 @@ export const SocialAuthButtons: React.FC<SocialAuthButtonsProps> = ({ mode, sele
           type="button"
           disabled={loadingProvider !== null}
           onClick={() => handleSocialAuth('Google', 'vikram.google@example.com', 'Vikram Sharma (Google)')}
-          className="flex items-center justify-center space-x-2 py-2.5 px-4 bg-white border border-neutral-300 hover:border-neutral-400 hover:bg-neutral-50 text-neutral-800 text-xs font-semibold transition-all shadow-sm disabled:opacity-50"
+          className="flex items-center justify-center space-x-2 py-2.5 px-4 bg-[#FBF8F1] border border-neutral-300 hover:border-neutral-400 hover:bg-[#FFF9EF] text-neutral-800 text-xs font-semibold transition-all shadow-sm disabled:opacity-50"
         >
           {loadingProvider === 'Google' ? (
-            <Loader2 className="w-4 h-4 animate-spin text-neutral-600" />
+            <Loader2 className="w-4 h-4 animate-spin text-[#6B7280]" />
           ) : (
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path
@@ -140,10 +140,10 @@ export const SocialAuthButtons: React.FC<SocialAuthButtonsProps> = ({ mode, sele
           type="button"
           disabled={loadingProvider !== null}
           onClick={() => handleSocialAuth('Microsoft', 'enterprise@outlook.com', 'Mudra Corporate User')}
-          className="flex items-center justify-center space-x-2 py-2.5 px-4 bg-white border border-neutral-300 hover:border-neutral-400 hover:bg-neutral-50 text-neutral-800 text-xs font-semibold transition-all shadow-sm disabled:opacity-50"
+          className="flex items-center justify-center space-x-2 py-2.5 px-4 bg-[#FBF8F1] border border-neutral-300 hover:border-neutral-400 hover:bg-[#FFF9EF] text-neutral-800 text-xs font-semibold transition-all shadow-sm disabled:opacity-50"
         >
           {loadingProvider === 'Microsoft' ? (
-            <Loader2 className="w-4 h-4 animate-spin text-neutral-600" />
+            <Loader2 className="w-4 h-4 animate-spin text-[#6B7280]" />
           ) : (
             <svg className="w-4 h-4" viewBox="0 0 23 23">
               <path fill="#f35325" d="M1 1h10v10H1z" />
@@ -170,10 +170,10 @@ export const SocialAuthButtons: React.FC<SocialAuthButtonsProps> = ({ mode, sele
       {/* Mobile OTP Modal */}
       {showOtpModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white border border-neutral-200 p-6 max-w-sm w-full space-y-4 shadow-2xl relative">
-            <div className="flex items-center justify-between border-b border-neutral-200 pb-3">
-              <h4 className="font-serif font-bold text-neutral-900 text-base flex items-center space-x-2">
-                <Phone className="w-4 h-4 text-[#D9234B]" />
+          <div className="bg-[#FBF8F1] border border-[#E8E0D0] p-6 max-w-sm w-full space-y-4 shadow-2xl relative">
+            <div className="flex items-center justify-between border-b border-[#E8E0D0] pb-3">
+              <h4 className="font-serif font-bold text-[#212529] text-base flex items-center space-x-2">
+                <Phone className="w-4 h-4 text-[#C4A35A]" />
                 <span>Mobile Number OTP Sign In</span>
               </h4>
               <button
@@ -182,7 +182,7 @@ export const SocialAuthButtons: React.FC<SocialAuthButtonsProps> = ({ mode, sele
                   setShowOtpModal(false);
                   setOtpSent(false);
                 }}
-                className="text-neutral-400 hover:text-neutral-900 font-bold text-sm"
+                className="text-neutral-400 hover:text-[#212529] font-bold text-sm"
               >
                 ✕
               </button>
@@ -190,35 +190,35 @@ export const SocialAuthButtons: React.FC<SocialAuthButtonsProps> = ({ mode, sele
 
             {!otpSent ? (
               <form onSubmit={handleSendOtp} className="space-y-3 text-xs">
-                <p className="text-neutral-600">Enter your 10-digit mobile number to receive a 4-digit verification code.</p>
+                <p className="text-[#6B7280]">Enter your 10-digit mobile number to receive a 4-digit verification code.</p>
                 <div>
-                  <label className="block font-bold text-neutral-700 mb-1">Mobile Number</label>
+                  <label className="block font-bold text-[#212529] mb-1">Mobile Number</label>
                   <div className="flex space-x-2">
-                    <span className="p-2.5 bg-neutral-100 border border-neutral-300 font-bold text-neutral-700">+91</span>
+                    <span className="p-2.5 bg-neutral-100 border border-neutral-300 font-bold text-[#212529]">+91</span>
                     <input
                       type="tel"
                       required
                       placeholder="98765 43210"
                       value={mobileNumber}
                       onChange={(e) => setMobileNumber(e.target.value)}
-                      className="flex-1 p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B] font-mono"
+                      className="flex-1 p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A] font-mono"
                     />
                   </div>
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 bg-[#D9234B] text-white font-bold uppercase tracking-wider hover:bg-[#9E1B32] transition-colors"
+                  className="w-full py-3 bg-[#C4A35A] text-white font-bold uppercase tracking-wider hover:bg-[#A8893D] transition-colors"
                 >
                   Send OTP Code
                 </button>
               </form>
             ) : (
               <form onSubmit={handleVerifyOtp} className="space-y-3 text-xs">
-                <div className="p-2.5 bg-rose-50 border border-rose-200 text-[#D9234B] font-semibold text-[11px] rounded">
+                <div className="p-2.5 bg-[#F5F0E5] border border-[#E8D5A3] text-[#C4A35A] font-semibold text-[11px] rounded">
                   OTP code sent to +91 {mobileNumber}! (Use demo code: 1234)
                 </div>
                 <div>
-                  <label className="block font-bold text-neutral-700 mb-1">4-Digit Security Code</label>
+                  <label className="block font-bold text-[#212529] mb-1">4-Digit Security Code</label>
                   <input
                     type="text"
                     maxLength={4}
@@ -226,12 +226,12 @@ export const SocialAuthButtons: React.FC<SocialAuthButtonsProps> = ({ mode, sele
                     placeholder="1 2 3 4"
                     value={otpCode}
                     onChange={(e) => setOtpCode(e.target.value)}
-                    className="w-full p-3 border border-neutral-300 text-center font-mono text-lg tracking-[0.5em] focus:outline-none focus:border-[#D9234B]"
+                    className="w-full p-3 border border-neutral-300 text-center font-mono text-lg tracking-[0.5em] focus:outline-none focus:border-[#C4A35A]"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 bg-[#D9234B] text-white font-bold uppercase tracking-wider hover:bg-[#9E1B32] transition-colors"
+                  className="w-full py-3 bg-[#C4A35A] text-white font-bold uppercase tracking-wider hover:bg-[#A8893D] transition-colors"
                 >
                   Verify &amp; Continue
                 </button>

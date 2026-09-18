@@ -20,23 +20,23 @@ export default function WholesaleDashboardPage() {
   const isPending = role === 'wholesale_pending' || (existingApp && existingApp.status === 'pending');
 
   return (
-    <div className="bg-[#F8FAFC] text-neutral-900 min-h-screen pb-20 pt-6">
+    <div className="bg-[#F8FAFC] text-[#212529] min-h-screen pb-20 pt-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         {/* Simple Business Welcome Card */}
-        <div className="bg-white border border-neutral-200 p-6 sm:p-8 rounded-xl shadow-sm space-y-4">
+        <div className="bg-[#FBF8F1] border border-[#E8E0D0] p-6 sm:p-8 rounded-xl shadow-sm space-y-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="flex items-center space-x-2">
-                <span className="px-2.5 py-0.5 bg-rose-50 text-[#D9234B] text-[11px] font-bold uppercase rounded">
+                <span className="px-2.5 py-0.5 bg-[#F5F0E5] text-[#C4A35A] text-[11px] font-bold uppercase rounded">
                   B2B Wholesale Account
                 </span>
                 <span className="text-xs text-neutral-400">•</span>
-                <span className="text-xs font-mono text-neutral-600">GST: {user.gstNumber || '29ABCDE1234F1Z5'}</span>
+                <span className="text-xs font-mono text-[#6B7280]">GST: {user.gstNumber || '29ABCDE1234F1Z5'}</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900 mt-1">
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#212529] mt-1">
                 {user.companyName || 'Apex Corporate Garments Ltd'}
               </h1>
-              <p className="text-xs text-neutral-500 mt-0.5">
+              <p className="text-xs text-[#6B7280] mt-0.5">
                 Contact: <strong>{user.name}</strong> ({user.email || 'procurement@apexcorp.com'})
               </p>
             </div>
@@ -44,7 +44,7 @@ export default function WholesaleDashboardPage() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/wholesale/products"
-                className="px-5 py-2.5 bg-[#D9234B] text-white text-xs font-bold uppercase rounded-lg hover:bg-[#9E1B32] transition-colors shadow-sm flex items-center space-x-2"
+                className="px-5 py-2.5 bg-[#C4A35A] text-white text-xs font-bold uppercase rounded-lg hover:bg-[#A8893D] transition-colors shadow-sm flex items-center space-x-2"
               >
                 <Package className="w-4 h-4" />
                 <span>Browse Bulk Catalog</span>
@@ -90,45 +90,45 @@ export default function WholesaleDashboardPage() {
         </div>
 
         {/* Clean Portal Navigation Tabs */}
-        <div className="bg-white border border-neutral-200 rounded-xl p-2 flex items-center space-x-2 overflow-x-auto text-xs font-bold uppercase">
+        <div className="bg-[#FBF8F1] border border-[#E8E0D0] rounded-xl p-2 flex items-center space-x-2 overflow-x-auto text-xs font-bold uppercase">
           <Link
             href="/wholesale/dashboard"
             className="px-4 py-2.5 bg-neutral-900 text-white rounded-lg whitespace-nowrap flex items-center space-x-2"
           >
-            <Building2 className="w-4 h-4 text-[#D9234B]" />
+            <Building2 className="w-4 h-4 text-[#C4A35A]" />
             <span>Dashboard</span>
           </Link>
           <Link
             href="/wholesale/products"
-            className="px-4 py-2.5 text-neutral-700 hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
+            className="px-4 py-2.5 text-[#212529] hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
           >
             <Package className="w-4 h-4" />
             <span>Wholesale Products</span>
           </Link>
           <Link
             href="/wholesale/orders"
-            className="px-4 py-2.5 text-neutral-700 hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
+            className="px-4 py-2.5 text-[#212529] hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
           >
             <ShoppingBag className="w-4 h-4" />
             <span>Bulk Orders</span>
           </Link>
           <Link
             href="/wholesale/quotations"
-            className="px-4 py-2.5 text-neutral-700 hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
+            className="px-4 py-2.5 text-[#212529] hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
           >
             <FileText className="w-4 h-4" />
             <span>Quotations (RFQ)</span>
           </Link>
           <Link
             href="/wholesale/invoices"
-            className="px-4 py-2.5 text-neutral-700 hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
+            className="px-4 py-2.5 text-[#212529] hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
           >
             <Download className="w-4 h-4" />
             <span>GST Invoices</span>
           </Link>
           <Link
             href="/wholesale/company-profile"
-            className="px-4 py-2.5 text-neutral-700 hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
+            className="px-4 py-2.5 text-[#212529] hover:bg-neutral-100 rounded-lg whitespace-nowrap flex items-center space-x-2"
           >
             <User className="w-4 h-4" />
             <span>Company Profile</span>
@@ -137,42 +137,42 @@ export default function WholesaleDashboardPage() {
 
         {/* 4 Simple Stat Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-5 bg-white border border-neutral-200 rounded-xl space-y-1 shadow-sm">
-            <span className="text-xs font-semibold text-neutral-500 uppercase">Active Orders</span>
-            <div className="text-2xl font-bold text-neutral-900">
+          <div className="p-5 bg-[#FBF8F1] border border-[#E8E0D0] rounded-xl space-y-1 shadow-sm">
+            <span className="text-xs font-semibold text-[#6B7280] uppercase">Active Orders</span>
+            <div className="text-2xl font-bold text-[#212529]">
               {wholesaleOrders.filter((o) => o.orderStatus === 'processing' || o.orderStatus === 'shipped').length}
             </div>
             <span className="text-[11px] text-emerald-700 font-semibold block">1 order in transit</span>
           </div>
 
-          <div className="p-5 bg-white border border-neutral-200 rounded-xl space-y-1 shadow-sm">
-            <span className="text-xs font-semibold text-neutral-500 uppercase">Pending RFQs</span>
-            <div className="text-2xl font-bold text-neutral-900">
+          <div className="p-5 bg-[#FBF8F1] border border-[#E8E0D0] rounded-xl space-y-1 shadow-sm">
+            <span className="text-xs font-semibold text-[#6B7280] uppercase">Pending RFQs</span>
+            <div className="text-2xl font-bold text-[#212529]">
               {MOCK_QUOTATIONS.filter((q) => q.status === 'pending' || q.status === 'sent').length}
             </div>
             <span className="text-[11px] text-amber-600 font-semibold block">Under quote review</span>
           </div>
 
-          <div className="p-5 bg-white border border-neutral-200 rounded-xl space-y-1 shadow-sm">
-            <span className="text-xs font-semibold text-neutral-500 uppercase">Completed Orders</span>
-            <div className="text-2xl font-bold text-neutral-900">12</div>
-            <span className="text-[11px] text-neutral-500 block">Fulfilled shipments</span>
+          <div className="p-5 bg-[#FBF8F1] border border-[#E8E0D0] rounded-xl space-y-1 shadow-sm">
+            <span className="text-xs font-semibold text-[#6B7280] uppercase">Completed Orders</span>
+            <div className="text-2xl font-bold text-[#212529]">12</div>
+            <span className="text-[11px] text-[#6B7280] block">Fulfilled shipments</span>
           </div>
 
-          <div className="p-5 bg-rose-50/70 border border-rose-200 rounded-xl space-y-1 shadow-sm">
-            <span className="text-xs font-semibold text-[#9E1B32] uppercase">Total Purchase Value</span>
-            <div className="text-2xl font-bold text-[#D9234B]">
+          <div className="p-5 bg-[#F5F0E5]/70 border border-[#E8D5A3] rounded-xl space-y-1 shadow-sm">
+            <span className="text-xs font-semibold text-[#A8893D] uppercase">Total Purchase Value</span>
+            <div className="text-2xl font-bold text-[#C4A35A]">
               ₹{totalPurchaseValue.toLocaleString('en-IN')}
             </div>
-            <span className="text-[11px] text-neutral-600 font-semibold block">GST tax credit applied</span>
+            <span className="text-[11px] text-[#6B7280] font-semibold block">GST tax credit applied</span>
           </div>
         </div>
 
         {/* Simple Recent Bulk Orders Table */}
-        <div className="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm">
-          <div className="p-4 border-b border-neutral-200 bg-neutral-50 flex items-center justify-between">
-            <h3 className="font-bold text-sm text-neutral-900">Recent Bulk Orders &amp; Dispatches</h3>
-            <Link href="/wholesale/orders" className="text-xs font-bold text-[#D9234B] hover:underline">
+        <div className="bg-[#FBF8F1] border border-[#E8E0D0] rounded-xl overflow-hidden shadow-sm">
+          <div className="p-4 border-b border-[#E8E0D0] bg-[#FFF9EF] flex items-center justify-between">
+            <h3 className="font-bold text-sm text-[#212529]">Recent Bulk Orders &amp; Dispatches</h3>
+            <Link href="/wholesale/orders" className="text-xs font-bold text-[#C4A35A] hover:underline">
               View All Orders →
             </Link>
           </div>
@@ -180,7 +180,7 @@ export default function WholesaleDashboardPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="bg-neutral-100 text-neutral-700 font-bold uppercase">
+                <tr className="bg-neutral-100 text-[#212529] font-bold uppercase">
                   <th className="p-3">Order Number</th>
                   <th className="p-3">Items Summary</th>
                   <th className="p-3">Total Amount</th>
@@ -191,12 +191,12 @@ export default function WholesaleDashboardPage() {
               </thead>
               <tbody className="divide-y divide-neutral-200">
                 {wholesaleOrders.map((ord) => (
-                  <tr key={ord.id} className="hover:bg-neutral-50">
-                    <td className="p-3 font-mono font-bold text-neutral-900">{ord.orderNumber}</td>
+                  <tr key={ord.id} className="hover:bg-[#FFF9EF]">
+                    <td className="p-3 font-mono font-bold text-[#212529]">{ord.orderNumber}</td>
                     <td className="p-3 text-neutral-800 font-medium">
                       {ord.items[0]?.productName} ({ord.items.reduce((a, i) => a + i.quantity, 0)} pcs)
                     </td>
-                    <td className="p-3 font-bold text-neutral-900">₹{ord.totalAmount.toLocaleString('en-IN')}</td>
+                    <td className="p-3 font-bold text-[#212529]">₹{ord.totalAmount.toLocaleString('en-IN')}</td>
                     <td className="p-3">
                       <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase rounded">
                         {ord.paymentStatus}
@@ -208,7 +208,7 @@ export default function WholesaleDashboardPage() {
                       </span>
                     </td>
                     <td className="p-3 text-right">
-                      <Link href="/wholesale/invoices" className="text-[#D9234B] font-bold hover:underline">
+                      <Link href="/wholesale/invoices" className="text-[#C4A35A] font-bold hover:underline">
                         Download Invoice →
                       </Link>
                     </td>

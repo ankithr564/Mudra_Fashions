@@ -14,7 +14,7 @@ export default function AdminQuotationsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between pb-4 border-b border-neutral-300">
         <div>
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B]">B2B Pricing RFQ</span>
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A]">B2B Pricing RFQ</span>
           <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">Quotation Requests ({quotes.length})</h1>
         </div>
       </div>

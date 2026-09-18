@@ -26,7 +26,7 @@ export default function AdminDashboardPage() {
         <div className="flex items-center space-x-3">
           <Link
             href="/admin/products/new"
-            className="px-4 py-2.5 bg-[#D9234B] text-white text-xs font-bold rounded-lg hover:bg-[#9E1B32] transition-colors shadow-sm flex items-center space-x-2"
+            className="px-4 py-2.5 bg-[#C4A35A] text-white text-xs font-bold rounded-lg hover:bg-[#A8893D] transition-colors shadow-sm flex items-center space-x-2"
           >
             <Plus className="w-4 h-4" />
             <span>Add New Product</span>
@@ -63,7 +63,7 @@ export default function AdminDashboardPage() {
             <FileCheck className="w-4 h-4 text-amber-600" />
           </div>
           <div className="text-2xl font-bold text-neutral-900">{pendingApps.length}</div>
-          <Link href="/admin/wholesale-applications" className="text-[11px] text-[#D9234B] font-bold hover:underline block">
+          <Link href="/admin/wholesale-applications" className="text-[11px] text-[#C4A35A] font-bold hover:underline block">
             Review Applications →
           </Link>
         </div>
@@ -88,7 +88,7 @@ export default function AdminDashboardPage() {
             <h3 className="font-bold text-sm text-neutral-900">Wholesale Partner Applications Needing Approval</h3>
             <p className="text-xs text-neutral-500">Click &quot;Approve&quot; to immediately unlock wholesale tier rates for the business client.</p>
           </div>
-          <Link href="/admin/wholesale-applications" className="text-xs font-bold text-[#D9234B] hover:underline">
+          <Link href="/admin/wholesale-applications" className="text-xs font-bold text-[#C4A35A] hover:underline">
             View All ({wholesaleApplications.length}) →
           </Link>
         </div>
@@ -137,7 +137,7 @@ export default function AdminDashboardPage() {
       <div className="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm">
         <div className="p-4 border-b border-neutral-200 bg-neutral-50 flex items-center justify-between">
           <h3 className="font-bold text-sm text-neutral-900">Recent Customer Orders</h3>
-          <Link href="/admin/orders" className="text-xs font-bold text-[#D9234B] hover:underline">
+          <Link href="/admin/orders" className="text-xs font-bold text-[#C4A35A] hover:underline">
             View All Orders →
           </Link>
         </div>
@@ -160,7 +160,7 @@ export default function AdminDashboardPage() {
                   <td className="p-3 font-mono font-bold text-neutral-900">{ord.orderNumber}</td>
                   <td className="p-3 font-medium text-neutral-800">{ord.customerName}</td>
                   <td className="p-3">
-                    <span className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${ord.type === 'wholesale' ? 'bg-rose-100 text-[#D9234B]' : 'bg-neutral-200 text-neutral-700'}`}>
+                    <span className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${ord.type === 'wholesale' ? 'bg-rose-100 text-[#C4A35A]' : 'bg-neutral-200 text-neutral-700'}`}>
                       {ord.type}
                     </span>
                   </td>
@@ -171,7 +171,7 @@ export default function AdminDashboardPage() {
                     </span>
                   </td>
                   <td className="p-3 text-right">
-                    <Link href="/admin/orders" className="text-[#D9234B] font-bold hover:underline">
+                    <Link href="/admin/orders" className="text-[#C4A35A] font-bold hover:underline">
                       Manage →
                     </Link>
                   </td>

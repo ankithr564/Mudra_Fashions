@@ -50,17 +50,17 @@ export default function ProductDetailPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen pb-20 pt-8">
+    <div className="bg-[#FBF8F1] min-h-screen pb-20 pt-8">
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-        <nav className="flex items-center space-x-2 text-xs text-neutral-500 uppercase tracking-wider">
-          <Link href="/" className="hover:text-neutral-900">Home</Link>
+        <nav className="flex items-center space-x-2 text-xs text-[#6B7280] uppercase tracking-wider">
+          <Link href="/" className="hover:text-[#212529]">Home</Link>
           <span>/</span>
-          <Link href="/shop" className="hover:text-neutral-900">Shop</Link>
+          <Link href="/shop" className="hover:text-[#212529]">Shop</Link>
           <span>/</span>
-          <Link href={`/shop/${product.category}`} className="hover:text-neutral-900">{product.category}</Link>
+          <Link href={`/shop/${product.category}`} className="hover:text-[#212529]">{product.category}</Link>
           <span>/</span>
-          <span className="text-neutral-900 font-bold truncate">{product.name}</span>
+          <span className="text-[#212529] font-bold truncate">{product.name}</span>
         </nav>
       </div>
 
@@ -68,7 +68,7 @@ export default function ProductDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Left Gallery */}
           <div className="space-y-4">
-            <div className="relative aspect-[3/4] w-full bg-neutral-100 border border-neutral-200 overflow-hidden group">
+            <div className="relative aspect-[3/4] w-full bg-neutral-100 border border-[#E8E0D0] overflow-hidden group">
               <Image
                 src={product.images[activeImageIndex] || product.images[0]}
                 alt={product.name}
@@ -78,9 +78,9 @@ export default function ProductDetailPage() {
               />
               <button
                 onClick={() => toggleWishlist(product)}
-                className="absolute top-4 right-4 z-10 p-3 bg-white/90 backdrop-blur-sm rounded-full text-neutral-600 hover:text-[#D9234B] shadow-md transition-all"
+                className="absolute top-4 right-4 z-10 p-3 bg-[#FBF8F1]/90 backdrop-blur-sm rounded-full text-[#6B7280] hover:text-[#C4A35A] shadow-md transition-all"
               >
-                <Heart className={`w-5 h-5 ${isFav ? 'fill-[#D9234B] text-[#D9234B]' : ''}`} />
+                <Heart className={`w-5 h-5 ${isFav ? 'fill-[#C4A35A] text-[#C4A35A]' : ''}`} />
               </button>
             </div>
 
@@ -92,7 +92,7 @@ export default function ProductDetailPage() {
                     key={idx}
                     onClick={() => setActiveImageIndex(idx)}
                     className={`relative w-20 h-24 flex-shrink-0 border-2 transition-all ${
-                      activeImageIndex === idx ? 'border-[#D9234B] shadow-md' : 'border-neutral-200 hover:border-neutral-400'
+                      activeImageIndex === idx ? 'border-[#C4A35A] shadow-md' : 'border-[#E8E0D0] hover:border-neutral-400'
                     }`}
                   >
                     <Image src={img} alt={`Thumbnail ${idx}`} fill className="object-cover" />
@@ -105,29 +105,29 @@ export default function ProductDetailPage() {
           {/* Right Product Controls */}
           <div className="space-y-6">
             <div>
-              <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B] block mb-1">
+              <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A] block mb-1">
                 {product.subcategory}
               </span>
-              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-neutral-900 leading-tight">
+              <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#212529] leading-tight">
                 {product.name}
               </h1>
 
               <div className="flex items-center space-x-4 mt-3">
                 <div className="flex items-center text-amber-500 space-x-1">
                   <Star className="w-4 h-4 fill-amber-400" />
-                  <span className="text-sm font-bold text-neutral-900">{product.rating}</span>
+                  <span className="text-sm font-bold text-[#212529]">{product.rating}</span>
                 </div>
                 <span className="text-xs text-neutral-400">|</span>
-                <span className="text-xs text-neutral-600 font-medium">{product.reviewsCount} Customer Reviews</span>
+                <span className="text-xs text-[#6B7280] font-medium">{product.reviewsCount} Customer Reviews</span>
                 <span className="text-xs text-neutral-400">|</span>
                 <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider">In Stock ({product.stockCount} units)</span>
               </div>
             </div>
 
             {/* Price Box */}
-            <div className="p-4 bg-neutral-50 border border-neutral-200 flex items-center justify-between">
+            <div className="p-4 bg-[#FFF9EF] border border-[#E8E0D0] flex items-center justify-between">
               <div>
-                <span className="font-serif text-3xl font-bold text-neutral-900">
+                <span className="font-serif text-3xl font-bold text-[#212529]">
                   ₹{unitPrice.toLocaleString('en-IN')}
                 </span>
                 {isWholesaleUser ? (
@@ -140,12 +140,12 @@ export default function ProductDetailPage() {
                   </span>
                 )}
               </div>
-              <span className="text-xs font-bold text-neutral-500 uppercase tracking-wider">
+              <span className="text-xs font-bold text-[#6B7280] uppercase tracking-wider">
                 Fabric: {product.fabric}
               </span>
             </div>
 
-            <p className="text-xs text-neutral-600 leading-relaxed">
+            <p className="text-xs text-[#6B7280] leading-relaxed">
               {product.description}
             </p>
 
@@ -157,7 +157,7 @@ export default function ProductDetailPage() {
                 {/* Color Selector */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-neutral-800 mb-2">
-                    Color: <span className="text-neutral-900 font-bold">{selectedColor}</span>
+                    Color: <span className="text-[#212529] font-bold">{selectedColor}</span>
                   </label>
                   <div className="flex space-x-3">
                     {product.colors.map((c) => (
@@ -165,7 +165,7 @@ export default function ProductDetailPage() {
                         key={c.name}
                         onClick={() => setSelectedColor(c.name)}
                         className={`flex items-center space-x-2 px-3 py-1.5 text-xs font-medium border transition-all ${
-                          selectedColor === c.name ? 'border-neutral-900 bg-white ring-2 ring-neutral-900 font-bold' : 'border-neutral-200 bg-neutral-50 text-neutral-600'
+                          selectedColor === c.name ? 'border-neutral-900 bg-[#FBF8F1] ring-2 ring-neutral-900 font-bold' : 'border-[#E8E0D0] bg-[#FFF9EF] text-[#6B7280]'
                         }`}
                       >
                         <span className="w-3.5 h-3.5 rounded-full border border-black/10" style={{ backgroundColor: c.hex }} />
@@ -183,7 +183,7 @@ export default function ProductDetailPage() {
                     </label>
                     <button
                       onClick={() => setIsSizeGuideOpen(true)}
-                      className="flex items-center space-x-1 text-xs font-bold text-[#D9234B] hover:underline"
+                      className="flex items-center space-x-1 text-xs font-bold text-[#C4A35A] hover:underline"
                     >
                       <Ruler className="w-4 h-4" />
                       <span>View Size Chart</span>
@@ -197,7 +197,7 @@ export default function ProductDetailPage() {
                         className={`px-4 py-2.5 text-xs font-bold border transition-all ${
                           selectedSize === sz
                             ? 'border-neutral-900 bg-neutral-900 text-white shadow-sm'
-                            : 'border-neutral-200 text-neutral-700 hover:border-neutral-400'
+                            : 'border-[#E8E0D0] text-[#212529] hover:border-neutral-400'
                         }`}
                       >
                         {sz}
@@ -227,7 +227,7 @@ export default function ProductDetailPage() {
 
                     <button
                       onClick={handleAddToCart}
-                      className="flex-1 py-3 px-6 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center space-x-2 hover:bg-[#9E1B32] transition-colors shadow-md"
+                      className="flex-1 py-3 px-6 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center space-x-2 hover:bg-[#A8893D] transition-colors shadow-md"
                     >
                       {added ? <Check className="w-4 h-4" /> : <ShoppingBag className="w-4 h-4" />}
                       <span>{added ? 'Added to Cart' : 'Add to Cart'}</span>
@@ -246,17 +246,17 @@ export default function ProductDetailPage() {
             )}
 
             {/* Assurance Badges */}
-            <div className="grid grid-cols-3 gap-2 pt-6 border-t border-neutral-200 text-center text-[11px] text-neutral-600">
-              <div className="p-2 bg-neutral-50 border border-neutral-200">
-                <Truck className="w-4 h-4 text-[#D9234B] mx-auto mb-1" />
+            <div className="grid grid-cols-3 gap-2 pt-6 border-t border-[#E8E0D0] text-center text-[11px] text-[#6B7280]">
+              <div className="p-2 bg-[#FFF9EF] border border-[#E8E0D0]">
+                <Truck className="w-4 h-4 text-[#C4A35A] mx-auto mb-1" />
                 <span>Express Shipping</span>
               </div>
-              <div className="p-2 bg-neutral-50 border border-neutral-200">
-                <ShieldCheck className="w-4 h-4 text-[#D9234B] mx-auto mb-1" />
+              <div className="p-2 bg-[#FFF9EF] border border-[#E8E0D0]">
+                <ShieldCheck className="w-4 h-4 text-[#C4A35A] mx-auto mb-1" />
                 <span>GST Tax Invoice</span>
               </div>
-              <div className="p-2 bg-neutral-50 border border-neutral-200">
-                <RotateCcw className="w-4 h-4 text-[#D9234B] mx-auto mb-1" />
+              <div className="p-2 bg-[#FFF9EF] border border-[#E8E0D0]">
+                <RotateCcw className="w-4 h-4 text-[#C4A35A] mx-auto mb-1" />
                 <span>15-Day Replacements</span>
               </div>
             </div>
@@ -264,12 +264,12 @@ export default function ProductDetailPage() {
         </div>
 
         {/* Specifications & Details Tabs */}
-        <div className="mb-16 border border-neutral-200 bg-white">
-          <div className="flex border-b border-neutral-200 bg-neutral-50">
+        <div className="mb-16 border border-[#E8E0D0] bg-[#FBF8F1]">
+          <div className="flex border-b border-[#E8E0D0] bg-[#FFF9EF]">
             <button
               onClick={() => setActiveTab('specs')}
               className={`py-4 px-6 text-xs font-bold uppercase tracking-wider transition-colors ${
-                activeTab === 'specs' ? 'bg-white border-t-2 border-[#D9234B] text-neutral-900' : 'text-neutral-500 hover:text-neutral-900'
+                activeTab === 'specs' ? 'bg-[#FBF8F1] border-t-2 border-[#C4A35A] text-[#212529]' : 'text-[#6B7280] hover:text-[#212529]'
               }`}
             >
               Product Specifications
@@ -277,7 +277,7 @@ export default function ProductDetailPage() {
             <button
               onClick={() => setActiveTab('care')}
               className={`py-4 px-6 text-xs font-bold uppercase tracking-wider transition-colors ${
-                activeTab === 'care' ? 'bg-white border-t-2 border-[#D9234B] text-neutral-900' : 'text-neutral-500 hover:text-neutral-900'
+                activeTab === 'care' ? 'bg-[#FBF8F1] border-t-2 border-[#C4A35A] text-[#212529]' : 'text-[#6B7280] hover:text-[#212529]'
               }`}
             >
               Care Instructions
@@ -285,7 +285,7 @@ export default function ProductDetailPage() {
             <button
               onClick={() => setActiveTab('reviews')}
               className={`py-4 px-6 text-xs font-bold uppercase tracking-wider transition-colors ${
-                activeTab === 'reviews' ? 'bg-white border-t-2 border-[#D9234B] text-neutral-900' : 'text-neutral-500 hover:text-neutral-900'
+                activeTab === 'reviews' ? 'bg-[#FBF8F1] border-t-2 border-[#C4A35A] text-[#212529]' : 'text-[#6B7280] hover:text-[#212529]'
               }`}
             >
               Customer Reviews ({product.reviewsCount})
@@ -297,49 +297,49 @@ export default function ProductDetailPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
                 <div className="space-y-3">
                   <div className="flex justify-between py-2 border-b border-neutral-100">
-                    <span className="text-neutral-500">Fabric Type</span>
-                    <span className="font-bold text-neutral-900">{product.fabric}</span>
+                    <span className="text-[#6B7280]">Fabric Type</span>
+                    <span className="font-bold text-[#212529]">{product.fabric}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-neutral-100">
-                    <span className="text-neutral-500">Material Composition</span>
-                    <span className="font-bold text-neutral-900">{product.material}</span>
+                    <span className="text-[#6B7280]">Material Composition</span>
+                    <span className="font-bold text-[#212529]">{product.material}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-neutral-100">
-                    <span className="text-neutral-500">Fit Cut</span>
-                    <span className="font-bold text-neutral-900">{product.fit}</span>
+                    <span className="text-[#6B7280]">Fit Cut</span>
+                    <span className="font-bold text-[#212529]">{product.fit}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-neutral-100">
-                    <span className="text-neutral-500">Pattern</span>
-                    <span className="font-bold text-neutral-900">{product.pattern}</span>
+                    <span className="text-[#6B7280]">Pattern</span>
+                    <span className="font-bold text-[#212529]">{product.pattern}</span>
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   {product.sleeveType && (
                     <div className="flex justify-between py-2 border-b border-neutral-100">
-                      <span className="text-neutral-500">Sleeve Type</span>
-                      <span className="font-bold text-neutral-900">{product.sleeveType}</span>
+                      <span className="text-[#6B7280]">Sleeve Type</span>
+                      <span className="font-bold text-[#212529]">{product.sleeveType}</span>
                     </div>
                   )}
                   {product.collarType && (
                     <div className="flex justify-between py-2 border-b border-neutral-100">
-                      <span className="text-neutral-500">Collar Type</span>
-                      <span className="font-bold text-neutral-900">{product.collarType}</span>
+                      <span className="text-[#6B7280]">Collar Type</span>
+                      <span className="font-bold text-[#212529]">{product.collarType}</span>
                     </div>
                   )}
                   <div className="flex justify-between py-2 border-b border-neutral-100">
-                    <span className="text-neutral-500">Product Category</span>
-                    <span className="font-bold text-neutral-900">{product.category}</span>
+                    <span className="text-[#6B7280]">Product Category</span>
+                    <span className="font-bold text-[#212529]">{product.category}</span>
                   </div>
                 </div>
               </div>
             )}
 
             {activeTab === 'care' && (
-              <ul className="space-y-2 text-xs text-neutral-700">
+              <ul className="space-y-2 text-xs text-[#212529]">
                 {product.careInstructions.map((ins, idx) => (
                   <li key={idx} className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#D9234B]" />
+                    <CheckCircle2 className="w-4 h-4 text-[#C4A35A]" />
                     <span>{ins}</span>
                   </li>
                 ))}
@@ -348,10 +348,10 @@ export default function ProductDetailPage() {
 
             {activeTab === 'reviews' && (
               <div className="space-y-4">
-                <div className="p-4 bg-neutral-50 border border-neutral-200 flex items-center justify-between">
+                <div className="p-4 bg-[#FFF9EF] border border-[#E8E0D0] flex items-center justify-between">
                   <div>
-                    <span className="text-2xl font-serif font-bold text-neutral-900">{product.rating} / 5.0</span>
-                    <span className="block text-xs text-neutral-500">Based on {product.reviewsCount} verified purchases</span>
+                    <span className="text-2xl font-serif font-bold text-[#212529]">{product.rating} / 5.0</span>
+                    <span className="block text-xs text-[#6B7280]">Based on {product.reviewsCount} verified purchases</span>
                   </div>
                   <button className="px-4 py-2 bg-neutral-900 text-white text-xs font-bold uppercase tracking-wider">
                     Write a Review
@@ -365,7 +365,7 @@ export default function ProductDetailPage() {
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div>
-            <h3 className="font-serif font-bold text-2xl text-neutral-900 mb-6">
+            <h3 className="font-serif font-bold text-2xl text-[#212529] mb-6">
               You May Also Like
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">

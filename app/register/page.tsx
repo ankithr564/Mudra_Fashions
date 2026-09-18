@@ -43,18 +43,18 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="bg-neutral-50 min-h-screen py-12 sm:py-16 flex items-center justify-center px-4">
-      <div className="bg-white border border-neutral-200 p-6 sm:p-10 shadow-2xl max-w-lg w-full space-y-6">
+    <div className="bg-[#FFF9EF] min-h-screen py-12 sm:py-16 flex items-center justify-center px-4">
+      <div className="bg-[#FBF8F1] border border-[#E8E0D0] p-6 sm:p-10 shadow-2xl max-w-lg w-full space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
           <MudraLogo size="sm" />
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-neutral-900 pt-2">Create Account</h1>
-          <p className="text-xs text-neutral-500">Register manually or connect with Google &amp; Social accounts</p>
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#212529] pt-2">Create Account</h1>
+          <p className="text-xs text-[#6B7280]">Register manually or connect with Google &amp; Social accounts</p>
         </div>
 
         {/* 1. Express Social Sign Up */}
         <div className="space-y-3">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 block text-center">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B7280] block text-center">
             Express Social Sign Up
           </span>
           <SocialAuthButtons mode="register" selectedRole={accountType === 'wholesale' ? 'wholesale_pending' : 'retail'} />
@@ -62,8 +62,8 @@ export default function RegisterPage() {
 
         {/* Divider */}
         <div className="relative flex items-center justify-center my-4">
-          <div className="border-t border-neutral-200 w-full" />
-          <span className="bg-white px-3 text-[11px] font-bold text-neutral-400 uppercase tracking-widest absolute">
+          <div className="border-t border-[#E8E0D0] w-full" />
+          <span className="bg-[#FBF8F1] px-3 text-[11px] font-bold text-neutral-400 uppercase tracking-widest absolute">
             Or Register Manually
           </span>
         </div>
@@ -76,7 +76,7 @@ export default function RegisterPage() {
             className={`p-3 border text-center transition-all ${
               accountType === 'retail'
                 ? 'bg-neutral-900 text-white border-neutral-900 shadow-sm'
-                : 'bg-neutral-50 text-neutral-600 border-neutral-200 hover:bg-neutral-100'
+                : 'bg-[#FFF9EF] text-[#6B7280] border-[#E8E0D0] hover:bg-neutral-100'
             }`}
           >
             Retail Customer
@@ -86,8 +86,8 @@ export default function RegisterPage() {
             onClick={() => setAccountType('wholesale')}
             className={`p-3 border text-center transition-all flex items-center justify-center space-x-1.5 ${
               accountType === 'wholesale'
-                ? 'bg-[#D9234B] text-white border-[#D9234B] shadow-sm'
-                : 'bg-neutral-50 text-neutral-600 border-neutral-200 hover:bg-neutral-100'
+                ? 'bg-[#C4A35A] text-white border-[#C4A35A] shadow-sm'
+                : 'bg-[#FFF9EF] text-[#6B7280] border-[#E8E0D0] hover:bg-neutral-100'
             }`}
           >
             <Building2 className="w-3.5 h-3.5" />
@@ -98,7 +98,7 @@ export default function RegisterPage() {
         {/* 3. Manual Registration Form */}
         <form onSubmit={handleManualRegister} className="space-y-4 text-xs">
           <div>
-            <label className="block font-bold text-neutral-700 mb-1">Full Name *</label>
+            <label className="block font-bold text-[#212529] mb-1">Full Name *</label>
             <div className="relative">
               <User className="w-4 h-4 text-neutral-400 absolute left-3 top-3" />
               <input
@@ -107,13 +107,13 @@ export default function RegisterPage() {
                 placeholder="Vikramaditya Sharma"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full pl-9 pr-3 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                className="w-full pl-9 pr-3 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block font-bold text-neutral-700 mb-1">Email Address *</label>
+            <label className="block font-bold text-[#212529] mb-1">Email Address *</label>
             <div className="relative">
               <Mail className="w-4 h-4 text-neutral-400 absolute left-3 top-3" />
               <input
@@ -122,13 +122,13 @@ export default function RegisterPage() {
                 placeholder="vikram@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-9 pr-3 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                className="w-full pl-9 pr-3 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block font-bold text-neutral-700 mb-1">Phone Number *</label>
+            <label className="block font-bold text-[#212529] mb-1">Phone Number *</label>
             <div className="relative">
               <Phone className="w-4 h-4 text-neutral-400 absolute left-3 top-3" />
               <input
@@ -137,14 +137,14 @@ export default function RegisterPage() {
                 placeholder="+91 98765 43210"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full pl-9 pr-3 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                className="w-full pl-9 pr-3 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
               />
             </div>
           </div>
 
           {accountType === 'wholesale' && (
             <div>
-              <label className="block font-bold text-neutral-700 mb-1">Business / Company Name *</label>
+              <label className="block font-bold text-[#212529] mb-1">Business / Company Name *</label>
               <div className="relative">
                 <Building2 className="w-4 h-4 text-neutral-400 absolute left-3 top-3" />
                 <input
@@ -153,14 +153,14 @@ export default function RegisterPage() {
                   placeholder="e.g. Apex Corporate Textiles"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full pl-9 pr-3 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
               </div>
             </div>
           )}
 
           <div>
-            <label className="block font-bold text-neutral-700 mb-1">Create Password *</label>
+            <label className="block font-bold text-[#212529] mb-1">Create Password *</label>
             <div className="relative">
               <Lock className="w-4 h-4 text-neutral-400 absolute left-3 top-3" />
               <input
@@ -169,25 +169,25 @@ export default function RegisterPage() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-9 pr-10 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                className="w-full pl-9 pr-10 py-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-neutral-400 hover:text-neutral-600"
+                className="absolute right-3 top-3 text-neutral-400 hover:text-[#6B7280]"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
           </div>
 
-          <label className="flex items-start space-x-2 cursor-pointer text-neutral-600 pt-1">
+          <label className="flex items-start space-x-2 cursor-pointer text-[#6B7280] pt-1">
             <input
               type="checkbox"
               required
               checked={acceptTerms}
               onChange={(e) => setAcceptTerms(e.target.checked)}
-              className="mt-0.5 accent-[#D9234B]"
+              className="mt-0.5 accent-[#C4A35A]"
             />
             <span className="text-[11px] leading-tight">
               I agree to the <Link href="/terms" className="underline font-bold text-neutral-800">Terms of Service</Link> and{' '}
@@ -197,7 +197,7 @@ export default function RegisterPage() {
 
           <button
             type="submit"
-            className="w-full py-3.5 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#9E1B32] transition-colors flex items-center justify-center space-x-2 shadow-md"
+            className="w-full py-3.5 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#A8893D] transition-colors flex items-center justify-center space-x-2 shadow-md"
           >
             <span>{accountType === 'wholesale' ? 'Proceed to Wholesale Application' : 'Create Customer Account'}</span>
             <ArrowRight className="w-4 h-4" />
@@ -205,10 +205,10 @@ export default function RegisterPage() {
         </form>
 
         {/* Footer */}
-        <div className="pt-4 border-t border-neutral-200 text-center text-xs text-neutral-500 space-y-2">
+        <div className="pt-4 border-t border-[#E8E0D0] text-center text-xs text-[#6B7280] space-y-2">
           <p>
             Already have an account?{' '}
-            <Link href="/login" className="font-bold text-[#D9234B] hover:underline">
+            <Link href="/login" className="font-bold text-[#C4A35A] hover:underline">
               Sign In Here
             </Link>
           </p>

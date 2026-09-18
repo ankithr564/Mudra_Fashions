@@ -59,7 +59,7 @@ export default function WholesaleApplyPage() {
   const isPending = role === 'wholesale_pending' || (existingApp && existingApp.status === 'pending');
 
   return (
-    <div className="bg-white min-h-screen pb-20 pt-8">
+    <div className="bg-[#FBF8F1] min-h-screen pb-20 pt-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="down">
           <div className="text-center mb-10">
@@ -67,10 +67,10 @@ export default function WholesaleApplyPage() {
               <Building2 className="w-3.5 h-3.5" />
               <span>B2B Commercial Registration</span>
             </span>
-            <h1 className="font-serif text-3xl sm:text-5xl font-bold text-neutral-900">
+            <h1 className="font-serif text-3xl sm:text-5xl font-bold text-[#212529]">
               Apply for Wholesale Account
             </h1>
-            <p className="text-xs sm:text-sm text-neutral-500 max-w-lg mx-auto mt-2">
+            <p className="text-xs sm:text-sm text-[#6B7280] max-w-lg mx-auto mt-2">
               Fill in your business and GST credentials to request access to Mudra Fashions B2B tier pricing.
             </p>
           </div>
@@ -88,10 +88,10 @@ export default function WholesaleApplyPage() {
                 <span className="px-3 py-1 bg-emerald-200 text-emerald-900 text-xs font-bold uppercase tracking-widest rounded-full">
                   Account Approved &amp; Active
                 </span>
-                <h2 className="font-serif font-bold text-3xl text-neutral-900 mt-3 mb-2">
+                <h2 className="font-serif font-bold text-3xl text-[#212529] mt-3 mb-2">
                   Welcome to Mudra B2B Wholesale Tier
                 </h2>
-                <p className="text-sm text-neutral-700 max-w-md mx-auto">
+                <p className="text-sm text-[#212529] max-w-md mx-auto">
                   Your business account for <strong>{user.companyName || 'Your Business'}</strong> is verified! You now have full access to wholesale tier pricing, bulk matrix ordering, and GST invoices.
                 </p>
               </div>
@@ -99,14 +99,14 @@ export default function WholesaleApplyPage() {
               <div className="flex flex-wrap justify-center gap-4 pt-2">
                 <Link
                   href="/wholesale/dashboard"
-                  className="px-8 py-3.5 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#9E1B32] transition-colors shadow-lg flex items-center space-x-2"
+                  className="px-8 py-3.5 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#A8893D] transition-colors shadow-lg flex items-center space-x-2"
                 >
                   <span>Open Wholesale Dashboard</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/wholesale/products"
-                  className="px-8 py-3.5 bg-white text-neutral-900 border-2 border-neutral-900 text-xs font-bold uppercase tracking-widest hover:bg-neutral-900 hover:text-white transition-colors"
+                  className="px-8 py-3.5 bg-[#FBF8F1] text-[#212529] border-2 border-neutral-900 text-xs font-bold uppercase tracking-widest hover:bg-neutral-900 hover:text-white transition-colors"
                 >
                   Browse Wholesale Products
                 </Link>
@@ -125,16 +125,16 @@ export default function WholesaleApplyPage() {
                 <span className="px-3 py-1 bg-amber-200 text-amber-900 text-xs font-bold uppercase tracking-widest rounded-full">
                   Under Admin Review
                 </span>
-                <h2 className="font-serif font-bold text-2xl md:text-3xl text-neutral-900 mt-3 mb-2">
+                <h2 className="font-serif font-bold text-2xl md:text-3xl text-[#212529] mt-3 mb-2">
                   Your wholesale application has been submitted.
                 </h2>
-                <p className="text-sm text-neutral-700 max-w-md mx-auto">
+                <p className="text-sm text-[#212529] max-w-md mx-auto">
                   Application for <strong>{user.companyName || formData.businessName || 'Your Company'}</strong> is currently under review in the Admin Panel. Once approved by Admin, wholesale tier pricing will unlock automatically across the website!
                 </p>
               </div>
 
-              <div className="p-4 bg-white border border-amber-300 text-xs text-amber-900 max-w-md mx-auto text-left space-y-1">
-                <span className="font-bold block text-neutral-900">Application Summary:</span>
+              <div className="p-4 bg-[#FBF8F1] border border-amber-300 text-xs text-amber-900 max-w-md mx-auto text-left space-y-1">
+                <span className="font-bold block text-[#212529]">Application Summary:</span>
                 <p>• Applied Date: {existingApp?.appliedDate || 'Today'}</p>
                 <p>• GSTIN: {existingApp?.gstNumber || formData.gstNumber || 'Provided'}</p>
                 <p>• Email: {existingApp?.email || formData.email}</p>
@@ -154,57 +154,57 @@ export default function WholesaleApplyPage() {
         ) : (
           /* 3. Initial Application Form */
           <ScrollReveal direction="up">
-            <form onSubmit={handleSubmit} className="bg-white border border-neutral-200 p-6 sm:p-10 shadow-xl space-y-8">
+            <form onSubmit={handleSubmit} className="bg-[#FBF8F1] border border-[#E8E0D0] p-6 sm:p-10 shadow-xl space-y-8">
               {/* Company Info */}
               <div className="space-y-4">
-                <h3 className="font-serif font-bold text-lg text-neutral-900 pb-2 border-b border-neutral-200 flex items-center space-x-2">
-                  <Building2 className="w-4 h-4 text-[#D9234B]" />
+                <h3 className="font-serif font-bold text-lg text-[#212529] pb-2 border-b border-[#E8E0D0] flex items-center space-x-2">
+                  <Building2 className="w-4 h-4 text-[#C4A35A]" />
                   <span>1. Business Details</span>
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">Registered Business Name *</label>
+                    <label className="block font-bold text-[#212529] mb-1">Registered Business Name *</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Vanguard Hospitality Uniforms"
                       value={formData.businessName}
                       onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">GST Identification Number (GSTIN) *</label>
+                    <label className="block font-bold text-[#212529] mb-1">GST Identification Number (GSTIN) *</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. 07AAAAA0000A1Z5"
                       value={formData.gstNumber}
                       onChange={(e) => setFormData({ ...formData, gstNumber: e.target.value })}
-                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B] uppercase"
+                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A] uppercase"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">Contact Person Name *</label>
+                    <label className="block font-bold text-[#212529] mb-1">Contact Person Name *</label>
                     <input
                       type="text"
                       required
                       placeholder="Rohan Mehra"
                       value={formData.contactPerson}
                       onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
-                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">Business Type *</label>
+                    <label className="block font-bold text-[#212529] mb-1">Business Type *</label>
                     <select
                       value={formData.businessType}
                       onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
-                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     >
                       <option>Retail Garment Store / Boutique</option>
                       <option>Chain Store / Retailer</option>
@@ -220,61 +220,61 @@ export default function WholesaleApplyPage() {
 
               {/* Contact Details */}
               <div className="space-y-4">
-                <h3 className="font-serif font-bold text-lg text-neutral-900 pb-2 border-b border-neutral-200">
+                <h3 className="font-serif font-bold text-lg text-[#212529] pb-2 border-b border-[#E8E0D0]">
                   2. Contact &amp; Address
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">Work Email Address *</label>
+                    <label className="block font-bold text-[#212529] mb-1">Work Email Address *</label>
                     <input
                       type="email"
                       required
                       placeholder="rohan@vanguardhospitality.in"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">Contact Phone Number *</label>
+                    <label className="block font-bold text-[#212529] mb-1">Contact Phone Number *</label>
                     <input
                       type="tel"
                       required
                       placeholder="+91 98112 33445"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     />
                   </div>
 
                   <div className="sm:col-span-2">
-                    <label className="block font-bold text-neutral-700 mb-1">Registered Office Address *</label>
+                    <label className="block font-bold text-[#212529] mb-1">Registered Office Address *</label>
                     <input
                       type="text"
                       required
                       placeholder="Building No 14, Commercial Complex"
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">City *</label>
+                    <label className="block font-bold text-[#212529] mb-1">City *</label>
                     <input
                       type="text"
                       required
                       placeholder="New Delhi"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">State &amp; Pincode *</label>
+                    <label className="block font-bold text-[#212529] mb-1">State &amp; Pincode *</label>
                     <div className="grid grid-cols-2 gap-2">
                       <input
                         type="text"
@@ -282,7 +282,7 @@ export default function WholesaleApplyPage() {
                         placeholder="Delhi"
                         value={formData.state}
                         onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                        className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                        className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                       />
                       <input
                         type="text"
@@ -290,7 +290,7 @@ export default function WholesaleApplyPage() {
                         placeholder="110001"
                         value={formData.pincode}
                         onChange={(e) => setFormData({ ...formData, pincode: e.target.value })}
-                        className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                        className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                       />
                     </div>
                   </div>
@@ -299,17 +299,17 @@ export default function WholesaleApplyPage() {
 
               {/* Requirement Profile */}
               <div className="space-y-4">
-                <h3 className="font-serif font-bold text-lg text-neutral-900 pb-2 border-b border-neutral-200">
+                <h3 className="font-serif font-bold text-lg text-[#212529] pb-2 border-b border-[#E8E0D0]">
                   3. Expected Purchase Volume &amp; Categories
                 </h3>
 
                 <div className="space-y-4 text-xs">
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">Expected Monthly Order Volume</label>
+                    <label className="block font-bold text-[#212529] mb-1">Expected Monthly Order Volume</label>
                     <select
                       value={formData.expectedOrderQty}
                       onChange={(e) => setFormData({ ...formData, expectedOrderQty: e.target.value })}
-                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-3 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     >
                       <option>50 - 100 pieces / month</option>
                       <option>100 - 500 pieces / month</option>
@@ -319,7 +319,7 @@ export default function WholesaleApplyPage() {
                   </div>
 
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-2">Product Categories Interested In:</label>
+                    <label className="block font-bold text-[#212529] mb-2">Product Categories Interested In:</label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {categoryOptions.map((cat) => (
                         <button
@@ -328,11 +328,11 @@ export default function WholesaleApplyPage() {
                           onClick={() => handleCategoryToggle(cat)}
                           className={`flex items-center space-x-2 p-2.5 border text-left transition-colors ${
                             formData.categories.includes(cat)
-                              ? 'bg-rose-50 border-[#D9234B] text-[#D9234B] font-bold'
-                              : 'bg-neutral-50 border-neutral-200 text-neutral-700'
+                              ? 'bg-[#F5F0E5] border-[#C4A35A] text-[#C4A35A] font-bold'
+                              : 'bg-[#FFF9EF] border-[#E8E0D0] text-[#212529]'
                           }`}
                         >
-                          <span className={`w-4 h-4 rounded-sm border flex items-center justify-center ${formData.categories.includes(cat) ? 'bg-[#D9234B] text-white border-[#D9234B]' : 'border-neutral-400'}`}>
+                          <span className={`w-4 h-4 rounded-sm border flex items-center justify-center ${formData.categories.includes(cat) ? 'bg-[#C4A35A] text-white border-[#C4A35A]' : 'border-neutral-400'}`}>
                             {formData.categories.includes(cat) && <CheckCircle2 className="w-3 h-3" />}
                           </span>
                           <span>{cat}</span>
@@ -346,12 +346,12 @@ export default function WholesaleApplyPage() {
               <div className="pt-4 space-y-4">
                 <button
                   type="submit"
-                  className="w-full py-4 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg hover:bg-[#9E1B32] transition-colors"
+                  className="w-full py-4 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-[0.2em] shadow-lg hover:bg-[#A8893D] transition-colors"
                 >
                   Submit Wholesale Application
                 </button>
 
-                <div className="flex items-center justify-center space-x-1.5 text-[11px] text-neutral-500">
+                <div className="flex items-center justify-center space-x-1.5 text-[11px] text-[#6B7280]">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
                   <span>Strict confidentiality guaranteed. We do not share trade information.</span>
                 </div>

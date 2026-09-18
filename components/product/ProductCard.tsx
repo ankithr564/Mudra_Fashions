@@ -6,25 +6,64 @@ import Image from 'next/image';
 import { Product } from '@/data/products';
 import { useWishlist } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
-import { useRole } from '@/context/RoleContext';
-import { Heart, Star, Eye, ShoppingBag, Check } from 'lucide-react';
+import { Heart, Star, Eye, ShoppingBag, Check, Shirt, Droplets, Maximize2, Wind } from 'lucide-react';
 import { QuickViewModal } from './QuickViewModal';
 
 interface ProductCardProps {
   product: Product;
 }
 
+/**
+ * Minimal circular fabric/fit feature icons.
+ */
+const FabricFitIcons: React.FC<{ fabric?: string }> = ({ fabric }) => {
+  const fabricLower = (fabric || '').toLowerCase();
+
+  const icons: { icon: React.ReactNode; label: string }[] = [];
+
+  if (fabricLower.includes('cotton') || fabricLower.includes('giza')) {
+    icons.push({ icon: <Droplets className="w-3 h-3" />, label: '100% Cotton' });
+  }
+  if (fabricLower.includes('linen')) {
+    icons.push({ icon: <Wind className="w-3 h-3" />, label: 'Pure Linen' });
+  }
+  if (fabricLower.includes('stretch') || fabricLower.includes('lycra') || fabricLower.includes('spandex')) {
+    icons.push({ icon: <Maximize2 className="w-3 h-3" />, label: 'Stretch Fit' });
+  }
+  if (fabricLower.includes('wool') || fabricLower.includes('blend')) {
+    icons.push({ icon: <Shirt className="w-3 h-3" />, label: 'Fine Wool Blend' });
+  }
+
+  if (icons.length === 0) {
+    icons.push({ icon: <Shirt className="w-3 h-3" />, label: 'Luxury Fabric' });
+  }
+
+  return (
+    <div className="flex items-center space-x-1.5 mt-1.5">
+      {icons.map((item, i) => (
+        <span
+          key={i}
+          title={item.label}
+          className="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-[#F5F0E5] text-[#7BA48E] border border-[#E8E0D0] hover:border-[#C4A35A] hover:text-[#C4A35A] transition-colors cursor-default"
+        >
+          {item.icon}
+        </span>
+      ))}
+      <span className="text-[9px] text-[#6B7280] uppercase tracking-wider font-medium ml-0.5">
+        {icons[0]?.label}
+      </span>
+    </div>
+  );
+};
+
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { addToCart } = useCart();
-  const { role } = useRole();
 
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
   const [addedSuccess, setAddedSuccess] = useState(false);
 
   const isFavorite = isInWishlist(product.id);
-  const isWholesaleUser = role === 'wholesale_approved';
-  const displayPrice = isWholesaleUser && product.wholesalePrice ? product.wholesalePrice : product.price;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -34,8 +73,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       product.sizes[0] || 'M',
       product.colors[0]?.name || 'Standard',
       1,
-      displayPrice,
-      isWholesaleUser
+      product.price,
+      false
     );
     setAddedSuccess(true);
     setTimeout(() => setAddedSuccess(false), 2000);
@@ -49,22 +88,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <>
-      <div className="group relative bg-white border border-neutral-200/80 hover:border-neutral-400 transition-all duration-300 flex flex-col h-full overflow-hidden">
+      <div className="group relative bg-[#FFF9EF] border border-[#E8E0D0] hover:border-[#C4A35A]/50 transition-all duration-300 flex flex-col h-full overflow-hidden rounded-sm">
         {/* Badges */}
         <div className="absolute top-3 left-3 z-10 flex flex-col space-y-1">
           {product.isNew && (
-            <span className="px-2 py-0.5 bg-neutral-900 text-white text-[10px] font-bold uppercase tracking-widest">
+            <span className="px-2 py-0.5 bg-[#7BA48E] text-white text-[9px] font-bold uppercase tracking-widest rounded-sm">
               NEW
             </span>
           )}
           {product.isSale && (
-            <span className="px-2 py-0.5 bg-[#D9234B] text-white text-[10px] font-bold uppercase tracking-widest">
+            <span className="px-2 py-0.5 bg-[#C4A35A] text-white text-[9px] font-bold uppercase tracking-widest rounded-sm">
               SALE
-            </span>
-          )}
-          {isWholesaleUser && (
-            <span className="px-2 py-0.5 bg-amber-600 text-white text-[10px] font-bold uppercase tracking-widest">
-              WHOLESALE TIER
             </span>
           )}
         </div>
@@ -72,14 +106,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Wishlist Button */}
         <button
           onClick={handleWishlistToggle}
-          className="absolute top-3 right-3 z-10 p-2 bg-white/90 backdrop-blur-sm rounded-full text-neutral-600 hover:text-[#D9234B] shadow-sm hover:scale-110 transition-all"
+          className="absolute top-3 right-3 z-10 p-2 bg-[#FFF9EF]/90 backdrop-blur-sm rounded-full text-[#6B7280] hover:text-[#C4A35A] shadow-sm hover:scale-110 transition-all"
           title={isFavorite ? 'Remove from Wishlist' : 'Add to Wishlist'}
         >
-          <Heart className={`w-4 h-4 ${isFavorite ? 'fill-[#D9234B] text-[#D9234B]' : ''}`} />
+          <Heart className={`w-4 h-4 ${isFavorite ? 'fill-[#C4A35A] text-[#C4A35A]' : ''}`} />
         </button>
 
         {/* Image Container */}
-        <Link href={`/product/${product.slug}`} className="block relative aspect-[3/4] w-full overflow-hidden bg-neutral-100">
+        <Link href={`/product/${product.slug}`} className="block relative aspect-[3/4] w-full overflow-hidden bg-[#F5F0E5]">
           <Image
             src={product.images[0]}
             alt={product.name}
@@ -105,14 +139,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 e.stopPropagation();
                 setIsQuickViewOpen(true);
               }}
-              className="flex-1 py-2 px-3 bg-white text-neutral-900 text-xs font-semibold uppercase tracking-wider flex items-center justify-center space-x-1 hover:bg-neutral-100 transition-colors"
+              className="flex-1 py-2 px-3 bg-[#FFF9EF] text-[#212529] text-xs font-semibold uppercase tracking-wider flex items-center justify-center space-x-1 hover:bg-[#F5F0E5] transition-colors rounded-sm"
             >
               <Eye className="w-3.5 h-3.5" />
               <span>Quick View</span>
             </button>
             <button
               onClick={handleAddToCart}
-              className="py-2 px-3 bg-[#D9234B] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center hover:bg-[#9E1B32] transition-colors"
+              className="py-2 px-3 bg-[#C4A35A] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center hover:bg-[#A8893D] transition-colors rounded-sm"
               title="Add to Cart"
             >
               {addedSuccess ? <Check className="w-3.5 h-3.5" /> : <ShoppingBag className="w-3.5 h-3.5" />}
@@ -123,42 +157,39 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Content */}
         <div className="p-4 flex-1 flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between text-[11px] text-neutral-500 uppercase tracking-wider mb-1">
+            <div className="flex items-center justify-between text-[11px] text-[#6B7280] uppercase tracking-wider mb-1">
               <span>{product.subcategory || product.category}</span>
               <div className="flex items-center space-x-1 text-amber-500">
                 <Star className="w-3 h-3 fill-amber-400" />
-                <span className="text-neutral-700 font-semibold">{product.rating}</span>
+                <span className="text-[#212529] font-semibold">{product.rating}</span>
               </div>
             </div>
 
-            <Link href={`/product/${product.slug}`} className="block group-hover:text-[#D9234B] transition-colors">
-              <h3 className="font-serif font-semibold text-sm text-neutral-900 line-clamp-1 mb-1">
+            <Link href={`/product/${product.slug}`} className="block group-hover:text-[#C4A35A] transition-colors">
+              <h3 className="font-serif font-semibold text-sm text-[#212529] line-clamp-1 mb-1">
                 {product.name}
               </h3>
             </Link>
 
-            <p className="text-xs text-neutral-500 line-clamp-1 mb-3">{product.fabric}</p>
+            <p className="text-xs text-[#6B7280] line-clamp-1 mb-1">{product.fabric}</p>
+
+            {/* Fabric & Fit Icons */}
+            <FabricFitIcons fabric={product.fabric} />
           </div>
 
-          <div className="pt-2 border-t border-neutral-100 flex items-center justify-between">
+          <div className="pt-2 border-t border-[#E8E0D0] flex items-center justify-between mt-2">
             <div>
-              <span className="font-serif text-base font-bold text-neutral-900">
-                ₹{displayPrice.toLocaleString('en-IN')}
+              <span className="font-serif text-base font-bold text-[#212529]">
+                ₹{product.price.toLocaleString('en-IN')}
               </span>
-              {isWholesaleUser ? (
-                <span className="block text-[10px] text-emerald-700 font-semibold">
-                  MOQ: {product.moq || 20} pcs
-                </span>
-              ) : (
-                <span className="text-xs text-neutral-400 line-through ml-2">
-                  ₹{Math.round(displayPrice * 1.25).toLocaleString('en-IN')}
-                </span>
-              )}
+              <span className="text-xs text-[#6B7280] line-through ml-2">
+                ₹{Math.round(product.price * 1.25).toLocaleString('en-IN')}
+              </span>
             </div>
 
             <button
               onClick={handleAddToCart}
-              className="text-xs font-bold text-[#D9234B] hover:text-[#9E1B32] uppercase tracking-wider underline underline-offset-4"
+              className="text-xs font-bold text-[#C4A35A] hover:text-[#A8893D] uppercase tracking-wider underline underline-offset-4"
             >
               {addedSuccess ? 'Added!' : '+ Cart'}
             </button>

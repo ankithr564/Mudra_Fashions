@@ -6,82 +6,93 @@ import Link from 'next/link';
 import { PRODUCTS, Product } from '@/data/products';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { useCart } from '@/context/CartContext';
-import { Layers, ShieldCheck, CheckCircle2, ShoppingBag, ArrowRight, Sparkles, Award, Calculator, Info } from 'lucide-react';
+import { Layers, ShieldCheck, CheckCircle2, ShoppingBag, ArrowRight, Sparkles, Award, Calculator, Info, Check } from 'lucide-react';
 
 export default function FabricsPage() {
   const fabricProducts = PRODUCTS.filter(
-    (p) => p.category === 'fabrics' || p.category === 'uniforms' || p.fabric.length > 0
+    (p) => p.category === 'fabrics'
   );
 
   const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedMeters, setSelectedMeters] = useState<number>(2.5);
   const [activeFabric, setActiveFabric] = useState<Product>(fabricProducts[0] || PRODUCTS[0]);
+  const [addedSuccess, setAddedSuccess] = useState(false);
   const { addToCart } = useCart();
 
   const fabricCategories = [
-    { id: 'all', name: 'All Technical Fabrics' },
-    { id: 'shirting', name: 'Premium Cotton Shirting' },
+    { id: 'all', name: 'All Luxury Fabrics' },
+    { id: 'cotton', name: 'Egyptian Giza Cotton' },
     { id: 'linen', name: 'European Pure Linen' },
-    { id: 'suiting', name: 'Poly-Viscose Suiting' },
-    { id: 'uniform', name: 'Institutional Uniform Fabrics' },
   ];
 
   const filteredFabrics = fabricProducts.filter((p) => {
     if (selectedType === 'all') return true;
-    if (selectedType === 'shirting') return p.name.toLowerCase().includes('shirting') || p.fabric.toLowerCase().includes('cotton');
-    if (selectedType === 'linen') return p.fabric.toLowerCase().includes('linen');
-    if (selectedType === 'suiting') return p.name.toLowerCase().includes('suiting') || p.fabric.toLowerCase().includes('viscose');
-    if (selectedType === 'uniform') return p.category === 'uniforms' || p.name.toLowerCase().includes('uniform');
+    if (selectedType === 'cotton') return p.fabric.toLowerCase().includes('cotton') || p.name.toLowerCase().includes('cotton');
+    if (selectedType === 'linen') return p.fabric.toLowerCase().includes('linen') || p.name.toLowerCase().includes('linen');
     return true;
   });
 
-  const pricePerMeter = activeFabric ? Math.round(activeFabric.price / 2.5) : 350;
+  const pricePerMeter = activeFabric ? activeFabric.price : 550;
   const calculatedTotal = Math.round(pricePerMeter * selectedMeters);
 
+  const handleAddToCart = () => {
+    if (!activeFabric) return;
+    addToCart(
+      activeFabric,
+      `${selectedMeters} Meters Cut`,
+      activeFabric.colors[0]?.name || 'Standard',
+      1,
+      calculatedTotal,
+      false
+    );
+    setAddedSuccess(true);
+    setTimeout(() => setAddedSuccess(false), 2000);
+  };
+
   return (
-    <div className="bg-white text-neutral-900 min-h-screen pb-20 pt-6">
+    <div className="bg-[#FBF8F1] text-[#212529] min-h-screen pb-20 pt-6">
       {/* 1. Header Showcase Banner */}
-      <section className="bg-white border-b border-neutral-200 py-12 mb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#FBF8F1] border-b border-[#E8E0D0] py-12 mb-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-4">
+            <div className="lg:col-span-7 space-y-3">
               <ScrollReveal direction="down">
-                <span className="inline-flex items-center space-x-2 px-3 py-1 bg-rose-50 border border-rose-200 text-[#D9234B] text-xs font-bold uppercase tracking-[0.25em] rounded-full">
+                <span className="inline-flex items-center space-x-2 px-3 py-1 bg-[#F5F0E5] border border-[#E8D5A3] text-[#C4A35A] text-xs font-bold uppercase tracking-[0.25em] rounded-full">
                   <Layers className="w-3.5 h-3.5" />
-                  <span>Textile Weave &amp; Mill Sourcing</span>
+                  <span>Artisanal Textiles</span>
                 </span>
-                <h1 className="font-serif text-4xl sm:text-5xl font-bold text-neutral-950 mt-2">
-                  Technical Fabrics &amp; Unstitched Shirting
+                <h1 className="font-serif text-3xl sm:text-5xl font-bold text-[#212529] mt-2">
+                  Fine Fabrics &amp; Unstitched Cloth
                 </h1>
-                <p className="text-xs sm:text-sm text-neutral-600 max-w-xl font-light leading-relaxed">
-                  High-count 80s 2-ply Mercerized Giza Cottons, 60 Lea European Flax Linen, and commercial anti-pilling uniform rolls for custom tailors and corporate apparel makers.
+                <p className="text-xs sm:text-sm text-[#6B7280] max-w-xl font-light leading-relaxed">
+                  High-count 80s 2-ply Mercerized Giza Cottons and 60 Lea European Flax Linen cut to your exact tailor specifications for custom shirts, trousers, and suits.
                 </p>
               </ScrollReveal>
             </div>
 
             <div className="lg:col-span-5">
               <ScrollReveal direction="left">
-                <div className="p-6 bg-white border border-neutral-200 shadow-xl space-y-4">
-                  <div className="flex items-center space-x-2 text-xs font-bold text-[#D9234B] uppercase tracking-wider">
+                <div className="p-5 bg-[#FFF9EF] border border-[#E8E0D0] shadow-sm rounded-sm space-y-3">
+                  <div className="flex items-center space-x-2 text-xs font-bold text-[#C4A35A] uppercase tracking-wider">
                     <Award className="w-4 h-4" />
-                    <span>Mudra Mill Guarantee</span>
+                    <span>Mudra Textile Guarantee</span>
                   </div>
-                  <div className="grid grid-cols-2 gap-3 text-xs">
-                    <div className="p-3 bg-neutral-50 border border-neutral-200">
-                      <span className="font-bold block text-neutral-900">Color Fastness</span>
-                      <span className="text-[11px] text-neutral-500">Grade 4.5+ Wash Tested</span>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div className="p-2.5 bg-[#FBF8F1] border border-[#E8E0D0] rounded-sm">
+                      <span className="font-bold block text-[#212529]">Color Fastness</span>
+                      <span className="text-[11px] text-[#6B7280]">Grade 4.5+ Tested</span>
                     </div>
-                    <div className="p-3 bg-neutral-50 border border-neutral-200">
-                      <span className="font-bold block text-neutral-900">Pre-Shrunk</span>
-                      <span className="text-[11px] text-neutral-500">Zero Shrinkage Finish</span>
+                    <div className="p-2.5 bg-[#FBF8F1] border border-[#E8E0D0] rounded-sm">
+                      <span className="font-bold block text-[#212529]">Pre-Shrunk</span>
+                      <span className="text-[11px] text-[#6B7280]">Zero Shrinkage Finish</span>
                     </div>
-                    <div className="p-3 bg-neutral-50 border border-neutral-200">
-                      <span className="font-bold block text-neutral-900">Standard Width</span>
-                      <span className="text-[11px] text-neutral-500">58&quot; (147 cm) Width</span>
+                    <div className="p-2.5 bg-[#FBF8F1] border border-[#E8E0D0] rounded-sm">
+                      <span className="font-bold block text-[#212529]">Standard Width</span>
+                      <span className="text-[11px] text-[#6B7280]">58&quot; (147 cm) Width</span>
                     </div>
-                    <div className="p-3 bg-neutral-50 border border-neutral-200">
-                      <span className="font-bold block text-neutral-900">MOQ Roll</span>
-                      <span className="text-[11px] text-neutral-500">50 Meters per Roll</span>
+                    <div className="p-2.5 bg-[#FBF8F1] border border-[#E8E0D0] rounded-sm">
+                      <span className="font-bold block text-[#212529]">Custom Lengths</span>
+                      <span className="text-[11px] text-[#6B7280]">From 1.6 Meters Up</span>
                     </div>
                   </div>
                 </div>
@@ -91,134 +102,163 @@ export default function FabricsPage() {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* 2. Interactive Meter Cut & Roll Calculator */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {/* 2. Interactive Meter Cut Calculator */}
         <ScrollReveal direction="up">
-          <div className="bg-neutral-50 text-neutral-900 p-6 sm:p-10 border border-neutral-200 shadow-xl">
+          <div className="bg-[#FFF9EF] text-[#212529] p-6 sm:p-8 border border-[#E8E0D0] shadow-sm rounded-sm">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-7 space-y-4">
-                <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B] flex items-center space-x-1.5">
-                  <Calculator className="w-4 h-4" />
-                  <span>Interactive Meter &amp; Cut Length Calculator</span>
+                <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A] flex items-center space-x-1.5">
+                  <Calculator className="w-3.5 h-3.5" />
+                  <span>Custom Cut Calculator</span>
                 </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-neutral-900">
-                  {activeFabric.name}
-                </h3>
-                <p className="text-xs text-neutral-600">
-                  Select your required meter cut length or select standard garment piece requirements.
+                <h2 className="font-serif text-2xl font-bold text-[#212529]">
+                  Select Your Fabric &amp; Tailoring Cut Length
+                </h2>
+                <p className="text-xs text-[#6B7280] leading-relaxed">
+                  Choose your desired natural textile and specify the required cut. We pack and ship running uncut fabric directly to your address with complimentary shipping on orders over ₹1,499.
                 </p>
 
-                {/* Meter Selection Buttons */}
+                {/* Length Preset Buttons */}
                 <div className="space-y-2 pt-2">
-                  <span className="text-xs font-bold text-neutral-700 block">Recommended Garment Lengths:</span>
-                  <div className="flex flex-wrap gap-2 text-xs font-bold">
-                    <button
-                      onClick={() => setSelectedMeters(1.6)}
-                      className={`px-3.5 py-2 border rounded-sm transition-all ${selectedMeters === 1.6 ? 'bg-[#D9234B] border-[#D9234B] text-white shadow-sm' : 'bg-white border-neutral-300 text-neutral-700 hover:bg-neutral-100'}`}
-                    >
-                      1.6m (Half Sleeve Shirt)
-                    </button>
-                    <button
-                      onClick={() => setSelectedMeters(2.5)}
-                      className={`px-3.5 py-2 border rounded-sm transition-all ${selectedMeters === 2.5 ? 'bg-[#D9234B] border-[#D9234B] text-white shadow-sm' : 'bg-white border-neutral-300 text-neutral-700 hover:bg-neutral-100'}`}
-                    >
-                      2.5m (Full Sleeve Shirt Piece)
-                    </button>
-                    <button
-                      onClick={() => setSelectedMeters(3.0)}
-                      className={`px-3.5 py-2 border rounded-sm transition-all ${selectedMeters === 3.0 ? 'bg-[#D9234B] border-[#D9234B] text-white shadow-sm' : 'bg-white border-neutral-300 text-neutral-700 hover:bg-neutral-100'}`}
-                    >
-                      3.0m (Trousers Piece)
-                    </button>
-                    <button
-                      onClick={() => setSelectedMeters(50)}
-                      className={`px-3.5 py-2 border rounded-sm transition-all ${selectedMeters === 50 ? 'bg-[#D9234B] border-[#D9234B] text-white shadow-sm' : 'bg-white border-neutral-300 text-neutral-700 hover:bg-neutral-100'}`}
-                    >
-                      50m (Full Commercial Roll)
-                    </button>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#6B7280] block">
+                    Recommended Tailoring Lengths:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { len: 1.6, label: '1.6m (Half Sleeve Shirt)' },
+                      { len: 2.5, label: '2.5m (Full Sleeve Shirt)' },
+                      { len: 3.5, label: '3.5m (Shirt + Trouser)' },
+                      { len: 5.0, label: '5.0m (Full 2-Piece Suit)' },
+                    ].map((preset) => (
+                      <button
+                        key={preset.len}
+                        onClick={() => setSelectedMeters(preset.len)}
+                        className={`px-3 py-1.5 text-xs font-semibold rounded-sm transition-all ${
+                          selectedMeters === preset.len
+                            ? 'bg-[#C4A35A] text-white shadow-xs'
+                            : 'bg-[#FBF8F1] border border-[#E8E0D0] text-[#212529] hover:bg-[#F5F0E5]'
+                        }`}
+                      >
+                        {preset.label}
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* Price Calculation Box */}
-              <div className="lg:col-span-5 bg-white p-6 border border-neutral-200 text-center space-y-4 shadow-md">
-                <div className="text-xs text-neutral-500">
-                  Price per Meter: <strong className="text-neutral-900 font-bold">₹{pricePerMeter} / meter</strong>
-                </div>
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-neutral-500 block">Total Cut Price:</span>
-                  <div className="font-serif text-4xl font-bold text-[#D9234B] mt-1">
-                    ₹{calculatedTotal.toLocaleString('en-IN')}
+              {/* Active Selection Summary Card */}
+              <div className="lg:col-span-5 bg-[#FBF8F1] p-5 border border-[#E8D5A3] space-y-4 rounded-sm">
+                <div className="flex items-center space-x-3">
+                  <div className="relative w-16 h-16 rounded overflow-hidden flex-shrink-0 bg-[#E8E0D0]">
+                    <Image
+                      src={activeFabric.images[0]}
+                      alt={activeFabric.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <span className="text-[10px] text-neutral-500 block mt-1">Includes All Taxes &amp; GST Credit</span>
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-[#C4A35A] tracking-wider block">
+                      Selected Textile
+                    </span>
+                    <h4 className="font-serif font-bold text-sm text-[#212529] line-clamp-1">
+                      {activeFabric.name}
+                    </h4>
+                    <span className="text-xs text-[#6B7280]">
+                      ₹{pricePerMeter} / meter
+                    </span>
+                  </div>
                 </div>
+
+                <div className="pt-3 border-t border-[#E8E0D0] space-y-1.5 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-[#6B7280]">Cut Length:</span>
+                    <span className="font-bold text-[#212529]">{selectedMeters} Meters</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#6B7280]">Total Price:</span>
+                    <span className="font-serif text-lg font-bold text-[#212529]">₹{calculatedTotal.toLocaleString('en-IN')}</span>
+                  </div>
+                </div>
+
                 <button
-                  onClick={() => addToCart(activeFabric, selectedMeters >= 50 ? '50m Roll' : `${selectedMeters} Meter Cut`, 'Standard Width', 1, calculatedTotal)}
-                  className="w-full py-3.5 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#9E1B32] transition-colors flex items-center justify-center space-x-2 shadow-md"
+                  onClick={handleAddToCart}
+                  className="w-full py-2.5 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 rounded-sm hover:bg-[#A8893D] transition-colors shadow-sm"
                 >
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>Add {selectedMeters} Meters to Cart</span>
+                  {addedSuccess ? <Check className="w-4 h-4" /> : <ShoppingBag className="w-4 h-4" />}
+                  <span>{addedSuccess ? 'Added to Cart!' : 'Add Cut to Cart'}</span>
                 </button>
               </div>
             </div>
           </div>
         </ScrollReveal>
 
-        {/* 3. Filter Category Pills */}
-        <div className="flex items-center space-x-2 overflow-x-auto pb-2 border-b border-neutral-200">
-          {fabricCategories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedType(cat.id)}
-              className={`px-5 py-2.5 text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
-                selectedType === cat.id
-                  ? 'bg-neutral-950 text-white shadow-md'
-                  : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
-              }`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
+        {/* 3. Fabric Catalog Grid */}
+        <section className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[#E8E0D0] gap-3">
+            <h3 className="font-serif text-xl font-bold text-[#212529]">
+              Available Textile Weaves
+            </h3>
+            <div className="flex space-x-2">
+              {fabricCategories.map((fc) => (
+                <button
+                  key={fc.id}
+                  onClick={() => setSelectedType(fc.id)}
+                  className={`px-3 py-1.5 text-xs font-semibold rounded-sm transition-all ${
+                    selectedType === fc.id
+                      ? 'bg-[#212529] text-white'
+                      : 'bg-[#FFF9EF] border border-[#E8E0D0] text-[#212529] hover:bg-[#F5F0E5]'
+                  }`}
+                >
+                  {fc.name}
+                </button>
+              ))}
+            </div>
+          </div>
 
-        {/* 4. Fabric Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredFabrics.map((fabric) => (
-            <ScrollReveal key={fabric.id} direction="up">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {filteredFabrics.map((fabric) => (
               <div
+                key={fabric.id}
                 onClick={() => setActiveFabric(fabric)}
-                className={`group cursor-pointer border bg-white p-5 transition-all ${
-                  activeFabric.id === fabric.id ? 'border-2 border-[#D9234B] shadow-xl' : 'border-neutral-200 hover:border-neutral-400'
+                className={`cursor-pointer p-4 bg-[#FFF9EF] border rounded-sm transition-all ${
+                  activeFabric.id === fabric.id
+                    ? 'border-[#C4A35A] ring-1 ring-[#C4A35A] shadow-md'
+                    : 'border-[#E8E0D0] hover:border-neutral-400'
                 }`}
               >
-                <div className="relative aspect-[4/3] w-full mb-4 overflow-hidden bg-neutral-100">
+                <div className="relative aspect-[4/3] w-full rounded overflow-hidden mb-3 bg-[#E8E0D0]">
                   <Image
-                    src={fabric.images?.[0] || 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&q=80&w=800'}
+                    src={fabric.images[0]}
                     alt={fabric.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover"
                   />
-                  <div className="absolute top-2 left-2 px-2.5 py-1 bg-neutral-900/90 text-white text-[10px] font-bold uppercase tracking-wider">
-                    {fabric.fabric}
+                  <div className="absolute top-2 left-2 px-2 py-0.5 bg-[#FFF9EF]/90 backdrop-blur-sm text-[9px] font-bold uppercase tracking-wider text-[#C4A35A] rounded-sm">
+                    {fabric.subcategory}
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <h4 className="font-serif font-bold text-base text-neutral-900 group-hover:text-[#D9234B] transition-colors">
-                    {fabric.name}
-                  </h4>
-                  <p className="text-xs text-neutral-500 line-clamp-2">{fabric.description}</p>
-                  <div className="flex items-center justify-between pt-2 border-t border-neutral-100 text-xs">
-                    <span className="font-bold text-neutral-900">₹{Math.round(fabric.price / 2.5)} / meter</span>
-                    <span className="text-[#D9234B] font-bold text-[11px] uppercase group-hover:underline">
-                      Select for Calculator →
-                    </span>
-                  </div>
+                <h4 className="font-serif font-bold text-sm text-[#212529] line-clamp-1 mb-1">
+                  {fabric.name}
+                </h4>
+                <p className="text-xs text-[#6B7280] line-clamp-2 mb-2">
+                  {fabric.description}
+                </p>
+
+                <div className="flex items-center justify-between pt-2 border-t border-[#E8E0D0] text-xs">
+                  <span className="font-serif font-bold text-sm text-[#212529]">
+                    ₹{fabric.price} / meter
+                  </span>
+                  <span className="text-[11px] font-semibold text-[#C4A35A] uppercase">
+                    Select &amp; Calculate →
+                  </span>
                 </div>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

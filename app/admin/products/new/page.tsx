@@ -39,7 +39,7 @@ export default function AdminAddProductPage() {
     <div className="space-y-6 max-w-4xl">
       <div className="flex items-center justify-between pb-4 border-b border-neutral-300">
         <div>
-          <Link href="/admin/products" className="text-xs text-[#D9234B] hover:underline flex items-center space-x-1 font-bold mb-1">
+          <Link href="/admin/products" className="text-xs text-[#C4A35A] hover:underline flex items-center space-x-1 font-bold mb-1">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to Products</span>
           </Link>
@@ -70,7 +70,7 @@ export default function AdminAddProductPage() {
                   placeholder="e.g. Royal Giza Cotton Formal Shirt"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
               </div>
 
@@ -79,7 +79,7 @@ export default function AdminAddProductPage() {
                 <select
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 >
                   {CATEGORIES.map((c) => (
                     <option key={c.id} value={c.slug}>{c.name}</option>
@@ -95,7 +95,7 @@ export default function AdminAddProductPage() {
                   placeholder="e.g. Formal Shirts / Corporate Uniforms"
                   value={formData.subcategory}
                   onChange={(e) => setFormData({ ...formData, subcategory: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function AdminAddProductPage() {
                 placeholder="Product description and craftsmanship highlights..."
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
               />
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function AdminAddProductPage() {
                   placeholder="1299"
                   value={formData.retailPrice}
                   onChange={(e) => setFormData({ ...formData, retailPrice: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
               </div>
 
@@ -139,7 +139,7 @@ export default function AdminAddProductPage() {
                   placeholder="750"
                   value={formData.wholesalePrice}
                   onChange={(e) => setFormData({ ...formData, wholesalePrice: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
               </div>
 
@@ -150,7 +150,7 @@ export default function AdminAddProductPage() {
                   required
                   value={formData.moq}
                   onChange={(e) => setFormData({ ...formData, moq: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function AdminAddProductPage() {
                   type="text"
                   value={formData.fabric}
                   onChange={(e) => setFormData({ ...formData, fabric: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
               </div>
 
@@ -178,7 +178,7 @@ export default function AdminAddProductPage() {
                   type="text"
                   value={formData.material}
                   onChange={(e) => setFormData({ ...formData, material: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
               </div>
 
@@ -188,7 +188,7 @@ export default function AdminAddProductPage() {
                   type="text"
                   value={formData.fit}
                   onChange={(e) => setFormData({ ...formData, fit: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 />
               </div>
 
@@ -197,7 +197,7 @@ export default function AdminAddProductPage() {
                 <select
                   value={formData.sizeChartType}
                   onChange={(e) => setFormData({ ...formData, sizeChartType: e.target.value })}
-                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                  className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                 >
                   <option value="shirt">Formal Shirts Chart</option>
                   <option value="pants">Formal Pants Chart</option>
@@ -211,7 +211,7 @@ export default function AdminAddProductPage() {
 
           <button
             type="submit"
-            className="w-full py-3.5 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#9E1B32] transition-colors flex items-center justify-center space-x-2"
+            className="w-full py-3.5 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#A8893D] transition-colors flex items-center justify-center space-x-2"
           >
             <Save className="w-4 h-4" />
             <span>Save &amp; Publish Product</span>

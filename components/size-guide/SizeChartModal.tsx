@@ -30,36 +30,36 @@ export const SizeChartModal: React.FC<SizeChartModalProps> = ({
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="bg-white text-neutral-900 rounded-none border border-neutral-200 shadow-2xl w-full max-w-3xl overflow-hidden max-h-[90vh] flex flex-col"
+          className="bg-[#FBF8F1] text-[#212529] rounded-none border border-[#E8E0D0] shadow-2xl w-full max-w-3xl overflow-hidden max-h-[90vh] flex flex-col"
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-200 bg-neutral-50">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-[#E8E0D0] bg-[#FFF9EF]">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-rose-50 text-[#D9234B] border border-rose-200">
+              <div className="p-2 bg-[#F5F0E5] text-[#C4A35A] border border-[#E8D5A3]">
                 <Ruler className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-serif text-lg font-bold text-neutral-900">{chartData.title}</h3>
-                <p className="text-xs text-neutral-500">{chartData.description}</p>
+                <h3 className="font-serif text-lg font-bold text-[#212529]">{chartData.title}</h3>
+                <p className="text-xs text-[#6B7280]">{chartData.description}</p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-2 text-neutral-400 hover:text-neutral-900 hover:bg-neutral-200 transition-colors"
+              className="p-2 text-neutral-400 hover:text-[#212529] hover:bg-neutral-200 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Subheader Toolbar: Tabs + IN/CM Switch */}
-          <div className="flex flex-wrap items-center justify-between px-6 py-3 bg-neutral-100/70 border-b border-neutral-200 gap-3">
+          <div className="flex flex-wrap items-center justify-between px-6 py-3 bg-neutral-100/70 border-b border-[#E8E0D0] gap-3">
             <div className="flex space-x-2">
               <button
                 onClick={() => setActiveTab('chart')}
                 className={`px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
                   activeTab === 'chart'
                     ? 'bg-neutral-900 text-white shadow-sm'
-                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200'
+                    : 'text-[#6B7280] hover:text-[#212529] hover:bg-neutral-200'
                 }`}
               >
                 Size Measurements
@@ -69,7 +69,7 @@ export const SizeChartModal: React.FC<SizeChartModalProps> = ({
                 className={`flex items-center space-x-1.5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all ${
                   activeTab === 'guide'
                     ? 'bg-neutral-900 text-white shadow-sm'
-                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200'
+                    : 'text-[#6B7280] hover:text-[#212529] hover:bg-neutral-200'
                 }`}
               >
                 <HelpCircle className="w-3.5 h-3.5" />
@@ -78,11 +78,11 @@ export const SizeChartModal: React.FC<SizeChartModalProps> = ({
             </div>
 
             {/* IN / CM Toggle */}
-            <div className="flex items-center space-x-1 bg-white border border-neutral-300 p-0.5">
+            <div className="flex items-center space-x-1 bg-[#FBF8F1] border border-neutral-300 p-0.5">
               <button
                 onClick={() => setUnit('in')}
                 className={`px-3 py-1 text-xs font-bold transition-colors ${
-                  unit === 'in' ? 'bg-[#D9234B] text-white' : 'text-neutral-600 hover:bg-neutral-100'
+                  unit === 'in' ? 'bg-[#C4A35A] text-white' : 'text-[#6B7280] hover:bg-neutral-100'
                 }`}
               >
                 IN
@@ -90,7 +90,7 @@ export const SizeChartModal: React.FC<SizeChartModalProps> = ({
               <button
                 onClick={() => setUnit('cm')}
                 className={`px-3 py-1 text-xs font-bold transition-colors ${
-                  unit === 'cm' ? 'bg-[#D9234B] text-white' : 'text-neutral-600 hover:bg-neutral-100'
+                  unit === 'cm' ? 'bg-[#C4A35A] text-white' : 'text-[#6B7280] hover:bg-neutral-100'
                 }`}
               >
                 CM
@@ -116,21 +116,21 @@ export const SizeChartModal: React.FC<SizeChartModalProps> = ({
                     {chartData.rows.map((row, idx) => (
                       <tr
                         key={idx}
-                        className={`border-b border-neutral-200 transition-colors hover:bg-rose-50/50 ${
-                          idx % 2 === 0 ? 'bg-white' : 'bg-neutral-50'
+                        className={`border-b border-[#E8E0D0] transition-colors hover:bg-[#F5F0E5]/50 ${
+                          idx % 2 === 0 ? 'bg-[#FBF8F1]' : 'bg-[#FFF9EF]'
                         }`}
                       >
                         {chartData.columns.map((col) => {
                           if (col.key === 'size') {
                             return (
-                              <td key={col.key} className="py-3 px-4 font-bold text-neutral-900 border border-neutral-200">
+                              <td key={col.key} className="py-3 px-4 font-bold text-[#212529] border border-[#E8E0D0]">
                                 {row.size}
                               </td>
                             );
                           }
                           const valObj = row[col.key] as { in: number; cm: number } | undefined;
                           return (
-                            <td key={col.key} className="py-3 px-4 text-neutral-700 border border-neutral-200">
+                            <td key={col.key} className="py-3 px-4 text-[#212529] border border-[#E8E0D0]">
                               {valObj ? valObj[unit] : '-'}
                             </td>
                           );
@@ -142,22 +142,22 @@ export const SizeChartModal: React.FC<SizeChartModalProps> = ({
               </div>
             ) : (
               <div className="space-y-6">
-                <div className="p-4 bg-rose-50 border-l-4 border-[#D9234B]">
-                  <h4 className="font-semibold text-sm text-[#9E1B32] mb-1">Fit Guarantee Tip</h4>
-                  <p className="text-xs text-neutral-700">
+                <div className="p-4 bg-[#F5F0E5] border-l-4 border-[#C4A35A]">
+                  <h4 className="font-semibold text-sm text-[#A8893D] mb-1">Fit Guarantee Tip</h4>
+                  <p className="text-xs text-[#212529]">
                     For custom bulk orders or tailored corporate fittings, request sample swatches or trial size sets from our Mudra Fashions team.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {chartData.howToMeasure.map((item, idx) => (
-                    <div key={idx} className="p-4 border border-neutral-200 bg-neutral-50/50 flex space-x-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#D9234B] flex-shrink-0 mt-0.5" />
+                    <div key={idx} className="p-4 border border-[#E8E0D0] bg-[#FFF9EF]/50 flex space-x-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#C4A35A] flex-shrink-0 mt-0.5" />
                       <div>
-                        <h5 className="font-bold text-xs uppercase tracking-wider text-neutral-900 mb-1">
+                        <h5 className="font-bold text-xs uppercase tracking-wider text-[#212529] mb-1">
                           {item.title}
                         </h5>
-                        <p className="text-xs text-neutral-600 leading-relaxed">{item.instruction}</p>
+                        <p className="text-xs text-[#6B7280] leading-relaxed">{item.instruction}</p>
                       </div>
                     </div>
                   ))}
@@ -167,7 +167,7 @@ export const SizeChartModal: React.FC<SizeChartModalProps> = ({
           </div>
 
           {/* Footer */}
-          <div className="px-6 py-3 border-t border-neutral-200 bg-neutral-50 flex items-center justify-between text-xs text-neutral-500">
+          <div className="px-6 py-3 border-t border-[#E8E0D0] bg-[#FFF9EF] flex items-center justify-between text-xs text-[#6B7280]">
             <span>Need custom corporate tailoring? Contact bulk@mudrafashions.com</span>
             <button
               onClick={onClose}

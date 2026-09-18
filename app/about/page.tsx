@@ -4,33 +4,33 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
-import { Award, ShieldCheck, Layers, Building2, ArrowRight } from 'lucide-react';
+import { Award, ShieldCheck, Scissors, Sparkles, ArrowRight, Heart } from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <div className="bg-white min-h-screen pb-20 pt-8">
+    <div className="bg-[#FBF8F1] min-h-screen pb-20 pt-6">
       {/* Hero Header */}
-      <div className="bg-white text-neutral-900 py-16 px-4 mb-16 relative overflow-hidden border-b border-neutral-200">
-        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-4">
+      <div className="bg-[#FBF8F1] text-[#212529] py-12 px-4 mb-12 relative overflow-hidden border-b border-[#E8E0D0]">
+        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-3">
           <ScrollReveal direction="down">
-            <span className="text-xs uppercase font-bold tracking-[0.3em] text-[#D9234B]">
-              Est. Indian Heritage &amp; Innovation
+            <span className="text-xs uppercase font-bold tracking-[0.3em] text-[#C4A35A]">
+              Heritage &amp; Artistry
             </span>
-            <h1 className="font-serif text-4xl sm:text-6xl font-bold mt-2 text-neutral-900">
+            <h1 className="font-serif text-3xl sm:text-5xl font-bold mt-2 text-[#212529]">
               The Story of Mudra Fashions
             </h1>
-            <p className="text-sm sm:text-base text-neutral-600 max-w-2xl mx-auto font-light leading-relaxed">
-              Crafting premium menswear, institutional uniforms, and high-thread textiles with timeless elegance and industrial precision.
+            <p className="text-xs sm:text-sm text-[#6B7280] max-w-2xl mx-auto font-light leading-relaxed">
+              Crafting refined menswear, bespoke tailoring, and high-thread natural textiles with timeless elegance.
             </p>
           </ScrollReveal>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Brand Mission & Story */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <ScrollReveal direction="right">
-            <div className="relative aspect-[4/3] w-full bg-neutral-100 border border-neutral-200 overflow-hidden shadow-xl">
+            <div className="relative aspect-[4/3] w-full bg-neutral-100 border border-[#E8E0D0] overflow-hidden shadow-lg rounded-sm">
               <Image
                 src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=800"
                 alt="Executive Menswear Craftsmanship"
@@ -41,102 +41,100 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <ScrollReveal direction="left">
-            <div className="space-y-6">
-              <span className="text-xs uppercase font-bold tracking-[0.3em] text-[#D9234B]">
+            <div className="space-y-4">
+              <span className="text-xs uppercase font-bold tracking-[0.3em] text-[#C4A35A]">
                 Crafting Distinction
               </span>
-              <h2 className="font-serif text-3xl font-bold text-neutral-900 leading-tight">
-                Designed in India. Made to Move with You.
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#212529] leading-tight">
+                Designed with Precision. Woven for Distinction.
               </h2>
-              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-light">
-                Founded with a singular mission: to bridge the gap between luxury retail tailoring and industrial uniform manufacturing. Mudra Fashions combines Egyptian Giza cotton, European flax linen, and heavy-duty poly-viscose weaves to serve individual gentlemen and enterprise workforces nationwide.
+              <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed font-light">
+                Founded with a singular passion: to deliver heirloom-quality menswear and luxury fabrics directly to the modern gentleman. Mudra Fashions brings together certified Egyptian Giza cotton, pure European flax linen, and master bespoke craftsmanship.
               </p>
-              <div className="pt-2 grid grid-cols-2 gap-4 text-xs font-bold text-neutral-900">
-                <div className="p-3 bg-neutral-50 border border-neutral-200">
-                  <span className="font-serif text-2xl text-[#D9234B] block">100%</span>
+              <div className="pt-2 grid grid-cols-2 gap-3 text-xs font-bold text-[#212529]">
+                <div className="p-3 bg-[#FFF9EF] border border-[#E8E0D0] rounded-sm">
+                  <span className="font-serif text-xl text-[#C4A35A] block">100%</span>
                   <span>Pure Organic Fibers</span>
                 </div>
-                <div className="p-3 bg-neutral-50 border border-neutral-200">
-                  <span className="font-serif text-2xl text-[#D9234B] block">500+</span>
-                  <span>Enterprise Clients</span>
+                <div className="p-3 bg-[#FFF9EF] border border-[#E8E0D0] rounded-sm">
+                  <span className="font-serif text-xl text-[#C4A35A] block">25,000+</span>
+                  <span>Discerning Gentlemen</span>
                 </div>
               </div>
             </div>
           </ScrollReveal>
         </section>
 
-        {/* Core Divisions */}
+        {/* Pillars of Excellence */}
         <section>
           <ScrollReveal direction="up">
-            <div className="text-center max-w-xl mx-auto mb-12">
-              <span className="text-xs uppercase font-bold tracking-[0.3em] text-[#D9234B]">
-                Three Pillars of Excellence
+            <div className="text-center max-w-xl mx-auto mb-10">
+              <span className="text-xs uppercase font-bold tracking-[0.3em] text-[#C4A35A]">
+                Pillars of Excellence
               </span>
-              <h2 className="font-serif text-3xl font-bold text-neutral-900 mt-2">Our Specialized Divisions</h2>
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#212529] mt-1">Our Craftsmanship Principles</h2>
             </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <ScrollReveal direction="up" delay={0.1}>
-              <div className="p-8 bg-neutral-50 border border-neutral-200 space-y-4 hover:border-neutral-400 transition-all">
-                <div className="w-12 h-12 bg-rose-50 text-[#D9234B] rounded-full flex items-center justify-center">
-                  <Award className="w-6 h-6" />
+              <div className="p-6 bg-[#FFF9EF] border border-[#E8E0D0] space-y-3 rounded-sm">
+                <div className="w-10 h-10 bg-[#F5F0E5] text-[#C4A35A] rounded-full flex items-center justify-center">
+                  <Award className="w-5 h-5" />
                 </div>
-                <h3 className="font-serif font-bold text-xl text-neutral-900">1. Executive Menswear</h3>
-                <p className="text-xs text-neutral-600 leading-relaxed">
-                  Slim-fit Giza formal shirts, flex-waist trousers, and structured Italian-cut blazers designed for boardroom executives.
+                <h3 className="font-serif font-bold text-base text-[#212529]">1. Superfine Natural Yarns</h3>
+                <p className="text-xs text-[#6B7280] leading-relaxed">
+                  We source only long-staple Egyptian Giza 88 cotton and Normandy flax linen for remarkable breathability and softness.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal direction="up" delay={0.2}>
-              <div className="p-8 bg-neutral-50 border border-neutral-200 space-y-4 hover:border-neutral-400 transition-all">
-                <div className="w-12 h-12 bg-rose-50 text-[#D9234B] rounded-full flex items-center justify-center">
-                  <Building2 className="w-6 h-6" />
+              <div className="p-6 bg-[#FFF9EF] border border-[#E8E0D0] space-y-3 rounded-sm">
+                <div className="w-10 h-10 bg-[#F5F0E5] text-[#C4A35A] rounded-full flex items-center justify-center">
+                  <Scissors className="w-5 h-5" />
                 </div>
-                <h3 className="font-serif font-bold text-xl text-neutral-900">2. Uniform Solutions</h3>
-                <p className="text-xs text-neutral-600 leading-relaxed">
-                  High-wear commercial apparel for hotels, hospitals, security guard teams, corporate offices, and educational institutions.
+                <h3 className="font-serif font-bold text-base text-[#212529]">2. Savile Row Inspired Tailoring</h3>
+                <p className="text-xs text-[#6B7280] leading-relaxed">
+                  Engineered with German interlinings, genuine Mother of Pearl buttons, and split-yoke ergonomic cuts.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal direction="up" delay={0.3}>
-              <div className="p-8 bg-neutral-50 border border-neutral-200 space-y-4 hover:border-neutral-400 transition-all">
-                <div className="w-12 h-12 bg-rose-50 text-[#D9234B] rounded-full flex items-center justify-center">
-                  <Layers className="w-6 h-6" />
+              <div className="p-6 bg-[#FFF9EF] border border-[#E8E0D0] space-y-3 rounded-sm">
+                <div className="w-10 h-10 bg-[#F5F0E5] text-[#C4A35A] rounded-full flex items-center justify-center">
+                  <Sparkles className="w-5 h-5" />
                 </div>
-                <h3 className="font-serif font-bold text-xl text-neutral-900">3. Textile Mill &amp; Fabrics</h3>
-                <p className="text-xs text-neutral-600 leading-relaxed">
-                  Supplying cut-lengths by the meter and 50m bolts of Giza cotton, Oxford weave, and pure linen to fashion houses and tailors.
+                <h3 className="font-serif font-bold text-base text-[#212529]">3. Curated Textile Swatches</h3>
+                <p className="text-xs text-[#6B7280] leading-relaxed">
+                  Uncut lengths of luxury shirting and suiting fabrics delivered directly to your door for custom bespoke creation.
                 </p>
               </div>
             </ScrollReveal>
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="p-12 bg-neutral-50 text-neutral-900 text-center border border-neutral-200 shadow-xl space-y-6">
-          <ScrollReveal direction="up">
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold">Ready to Experience Mudra Distinction?</h2>
-            <p className="text-xs sm:text-sm text-neutral-600 max-w-md mx-auto">
-              Explore our retail catalog or apply for commercial wholesale partnership today.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 pt-4">
-              <Link
-                href="/shop"
-                className="px-8 py-3.5 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#9E1B32] transition-colors shadow-md"
-              >
-                Shop Retail Collection
-              </Link>
-              <Link
-                href="/wholesale/apply"
-                className="px-8 py-3.5 bg-white text-neutral-900 text-xs font-bold uppercase tracking-widest hover:bg-neutral-100 transition-colors border border-neutral-300 shadow-sm"
-              >
-                Apply for Wholesale B2B
-              </Link>
-            </div>
-          </ScrollReveal>
+        {/* CTA to Shop */}
+        <section className="text-center py-10 border-t border-[#E8E0D0]">
+          <h2 className="font-serif text-2xl font-bold text-[#212529] mb-2">Experience Mudra Quality</h2>
+          <p className="text-xs text-[#6B7280] max-w-md mx-auto mb-5">
+            Explore our curated collections of executive shirts, tailored trousers, and fine fabrics.
+          </p>
+          <div className="flex items-center justify-center space-x-3">
+            <Link
+              href="/shop"
+              className="px-5 py-2.5 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-wider rounded-sm hover:bg-[#A8893D] transition-colors"
+            >
+              Shop Collection
+            </Link>
+            <Link
+              href="/fabrics"
+              className="px-5 py-2.5 bg-[#FFF9EF] text-[#212529] border border-[#212529] text-xs font-bold uppercase tracking-wider rounded-sm hover:bg-[#212529] hover:text-white transition-colors"
+            >
+              Explore Fabrics
+            </Link>
+          </div>
         </section>
       </div>
     </div>

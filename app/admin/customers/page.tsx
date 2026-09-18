@@ -17,7 +17,7 @@ export default function AdminCustomersPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-neutral-300">
         <div>
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B]">CRM Portal</span>
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A]">CRM Portal</span>
           <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">Customer CRM</h1>
         </div>
       </div>

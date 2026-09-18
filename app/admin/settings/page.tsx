@@ -10,7 +10,7 @@ export default function AdminSettingsPage() {
     <div className="space-y-6 max-w-2xl">
       <div className="flex items-center justify-between pb-4 border-b border-neutral-300">
         <div>
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B]">Store Setup</span>
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A]">Store Setup</span>
           <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">Admin Settings</h1>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function AdminSettingsPage() {
             setSaved(true);
             setTimeout(() => setSaved(false), 2000);
           }}
-          className="w-full py-3 bg-[#D9234B] text-white font-bold uppercase tracking-wider flex items-center justify-center space-x-2 hover:bg-[#9E1B32]"
+          className="w-full py-3 bg-[#C4A35A] text-white font-bold uppercase tracking-wider flex items-center justify-center space-x-2 hover:bg-[#A8893D]"
         >
           {saved ? <Check className="w-4 h-4" /> : <Save className="w-4 h-4" />}
           <span>{saved ? 'Settings Saved!' : 'Save Configurations'}</span>

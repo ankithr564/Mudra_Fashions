@@ -32,7 +32,7 @@ export default function AdminWholesaleApplicationsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-neutral-300">
         <div>
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B]">B2B Partner Verification</span>
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A]">B2B Partner Verification</span>
           <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">
             Wholesale Applications ({wholesaleApplications.length})
           </h1>
@@ -94,7 +94,7 @@ export default function AdminWholesaleApplicationsPage() {
                     {app.contactPerson}
                     <span className="block text-[10px] text-neutral-400">{app.email} • {app.phone}</span>
                   </td>
-                  <td className="p-3 font-mono font-bold text-[#D9234B]">{app.gstNumber}</td>
+                  <td className="p-3 font-mono font-bold text-[#C4A35A]">{app.gstNumber}</td>
                   <td className="p-3 text-neutral-600">{app.city}, {app.state}</td>
                   <td className="p-3 text-neutral-700">{app.expectedOrderQty}</td>
                   <td className="p-3 text-neutral-500">{app.appliedDate}</td>

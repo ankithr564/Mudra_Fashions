@@ -8,7 +8,7 @@ import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { useSearch } from '@/context/SearchContext';
 import { useRole } from '@/context/RoleContext';
-import { Search, Heart, ShoppingBag, User, Menu, Building2, Crown, ChevronDown, Sparkles, LogOut } from 'lucide-react';
+import { Search, Heart, ShoppingBag, User, Menu, ChevronDown, Sparkles, LogOut, Headphones } from 'lucide-react';
 import { MobileNav } from './MobileNav';
 
 export const Navbar: React.FC = () => {
@@ -21,91 +21,75 @@ export const Navbar: React.FC = () => {
   const { openSearch } = useSearch();
   const { role, user, setRole } = useRole();
 
+  // Exactly requested order: HOME, ABOUT, SHOP, FABRICS
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Shop', href: '/shop' },
-    { name: 'Fabrics', href: '/fabrics' },
-    { name: 'Wholesale', href: '/wholesale' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'HOME', href: '/' },
+    { name: 'ABOUT', href: '/about' },
+    { name: 'SHOP', href: '/shop' },
+    { name: 'FABRICS', href: '/fabrics' },
   ];
 
   const linkTextColor = (href: string) => {
     const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
     if (isActive) {
-      return 'text-[#D9234B] font-bold border-b-2 border-[#D9234B] pb-1';
+      return 'text-[#C4A35A] font-bold border-b-2 border-[#C4A35A] pb-1';
     }
-    return 'text-neutral-800 hover:text-[#D9234B] font-semibold pb-1 transition-colors';
+    return 'text-[#212529] hover:text-[#C4A35A] font-semibold pb-1 transition-colors';
   };
 
-  // Do not render storefront Navbar when inside Admin Panel routes
   if (pathname.startsWith('/admin')) {
     return null;
   }
 
   return (
     <>
-      {/* 1. Flowing Right-to-Left Ticker Announcement Bar */}
-      <div className="bg-white text-neutral-800 text-[11px] font-semibold py-2 px-4 border-b border-neutral-200 overflow-hidden relative">
-        <div className="flex items-center space-x-12 animate-marquee whitespace-nowrap">
-          {/* Loop Set 1 */}
-          <div className="flex items-center space-x-8">
+      {/* Announcement Ticker Bar */}
+      <div className="bg-[#2C2A25] text-[#F5F0E5] text-[10px] font-medium py-1.5 px-4 border-b border-[#3D3A33] overflow-hidden relative">
+        <div className="flex items-center space-x-10 animate-marquee whitespace-nowrap">
+          <div className="flex items-center space-x-6">
             <span className="flex items-center space-x-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="font-bold text-neutral-900 uppercase tracking-wider">Official Corporate Apparel &amp; Mill Direct Sourcing</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7BA48E] animate-pulse" />
+              <span className="font-semibold text-[#F5F0E5] uppercase tracking-wider">Handcrafted Luxury Menswear &amp; Textiles</span>
             </span>
-            <span className="text-neutral-300">•</span>
-            <span className="flex items-center space-x-1.5 text-neutral-700">
-              <Sparkles className="w-3.5 h-3.5 text-[#D9234B]" />
-              <span>Nationwide Express B2B &amp; Retail Freight Shipping</span>
+            <span className="text-[#6B7280]">•</span>
+            <span className="flex items-center space-x-1 text-[#D4C9B0]">
+              <Sparkles className="w-3 h-3 text-[#C4A35A]" />
+              <span>Complimentary Nationwide Express Shipping Above ₹1,499</span>
             </span>
-            <span className="text-neutral-300">•</span>
-            <span className="font-bold text-[#D9234B]">Official GST Input Tax Credit Invoices</span>
-            <span className="text-neutral-300">•</span>
-            <span>Tiered Wholesale Discounts Up to 55% OFF</span>
-            <span className="text-neutral-300">•</span>
-            <span className="font-serif italic text-neutral-600">Premium 80s Giza Cottons &amp; Pure Linen Fabrics</span>
+            <span className="text-[#6B7280]">•</span>
+            <span className="font-semibold text-[#C4A35A]">100% Pure Giza Cotton &amp; Fine Linens</span>
+            <span className="text-[#6B6760]">•</span>
+            <span>Hassle-Free 7-Day Exchange &amp; Returns</span>
           </div>
-
-          {/* Loop Set 2 (for seamless infinite marquee) */}
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-6">
             <span className="flex items-center space-x-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="font-bold text-neutral-900 uppercase tracking-wider">Official Corporate Apparel &amp; Mill Direct Sourcing</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#7BA48E] animate-pulse" />
+              <span className="font-semibold text-[#F5F0E5] uppercase tracking-wider">Handcrafted Luxury Menswear &amp; Textiles</span>
             </span>
-            <span className="text-neutral-300">•</span>
-            <span className="flex items-center space-x-1.5 text-neutral-700">
-              <Sparkles className="w-3.5 h-3.5 text-[#D9234B]" />
-              <span>Nationwide Express B2B &amp; Retail Freight Shipping</span>
+            <span className="text-[#6B6760]">•</span>
+            <span className="flex items-center space-x-1 text-[#D4C9B0]">
+              <Sparkles className="w-3 h-3 text-[#C4A35A]" />
+              <span>Complimentary Nationwide Express Shipping Above ₹1,499</span>
             </span>
-            <span className="text-neutral-300">•</span>
-            <span className="font-bold text-[#D9234B]">Official GST Input Tax Credit Invoices</span>
-            <span className="text-neutral-300">•</span>
-            <span>Tiered Wholesale Discounts Up to 55% OFF</span>
-            <span className="text-neutral-300">•</span>
-            <span className="font-serif italic text-neutral-600">Premium 80s Giza Cottons &amp; Pure Linen Fabrics</span>
+            <span className="text-[#6B6760]">•</span>
+            <span className="font-semibold text-[#C4A35A]">100% Pure Giza Cotton &amp; Fine Linens</span>
+            <span className="text-[#6B6760]">•</span>
+            <span>Hassle-Free 7-Day Exchange &amp; Returns</span>
           </div>
         </div>
       </div>
 
-      {/* 2. Main Header */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md text-neutral-900 border-b border-neutral-200 shadow-sm transition-all">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-20 md:h-24 flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center space-x-4 flex-shrink-0">
-            <button
-              onClick={() => setIsMobileNavOpen(true)}
-              className="lg:hidden p-2 text-neutral-800 hover:text-[#D9234B] transition-colors"
-              aria-label="Open navigation menu"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
-
-            <MudraLogo variant="light" size="md" />
+      {/* Main Header */}
+      <header className="sticky top-0 z-40 bg-[#FBF8F1]/95 backdrop-blur-md text-[#212529] border-b border-[#E8E0D0] shadow-xs">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
+          
+          {/* Left Zone: Single Mudra Brand Logo */}
+          <div className="flex items-center flex-shrink-0">
+            <MudraLogo size="md" />
           </div>
 
-          {/* Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest">
+          {/* Center Zone: HOME • ABOUT • SHOP • FABRICS (Desktop only) */}
+          <nav className="hidden lg:flex items-center justify-center space-x-8 xl:space-x-11 text-[11px] font-semibold uppercase tracking-[0.2em]">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -117,96 +101,100 @@ export const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          {/* Right Action Icons & CTA Buttons */}
-          <div className="flex items-center space-x-3 sm:space-x-4 flex-shrink-0">
-            {/* Search */}
+          {/* Right Zone: Search | Wishlist | Cart | [Account on desktop] | [Hamburger at right on mobile] */}
+          <div className="flex items-center space-x-1 sm:space-x-3 flex-shrink-0">
+            
+            {/* Desktop Only: SUPPORT Link & Divider */}
+            <div className="hidden md:flex items-center space-x-2 mr-1 pr-2 border-r border-[#E8E0D0]">
+              <Link
+                href="/contact"
+                className="flex items-center space-x-1.5 text-[10px] xl:text-[11px] uppercase tracking-wider font-semibold text-[#212529] hover:text-[#C4A35A] transition-colors"
+                title="Customer Support"
+              >
+                <Headphones className="w-3.5 h-3.5 text-[#C4A35A]" />
+                <span>SUPPORT</span>
+              </Link>
+            </div>
+
+            {/* Search Icon */}
             <button
               onClick={openSearch}
-              className="p-2 text-neutral-800 hover:text-[#D9234B] transition-colors rounded-full hover:bg-neutral-100"
-              aria-label="Search"
-              title="Search catalog"
+              className="p-2 text-[#212529] hover:text-[#C4A35A] transition-colors rounded-full hover:bg-[#F5F0E5]"
+              aria-label="Search products"
+              title="Search"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-4.5 h-4.5" />
             </button>
 
-            {/* Wishlist */}
+            {/* Wishlist Icon */}
             <Link
               href="/wishlist"
-              className="relative p-2 text-neutral-800 hover:text-[#D9234B] transition-colors rounded-full hover:bg-neutral-100"
+              className="relative p-2 text-[#212529] hover:text-[#C4A35A] transition-colors rounded-full hover:bg-[#F5F0E5]"
               aria-label="Wishlist"
-              title="View Wishlist"
+              title="Wishlist"
             >
-              <Heart className="w-5 h-5" />
+              <Heart className="w-4.5 h-4.5" />
               {wishlistCount > 0 && (
-                <span className="absolute top-0 right-0 w-4.5 h-4.5 bg-[#D9234B] text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-md">
+                <span className="absolute 0.5 top-0.5 right-0.5 w-3.5 h-3.5 bg-[#C4A35A] text-white text-[8px] font-bold rounded-full flex items-center justify-center">
                   {wishlistCount}
                 </span>
               )}
             </Link>
 
-            {/* Cart Button */}
+            {/* Cart Icon */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2 text-neutral-800 hover:text-[#D9234B] transition-colors rounded-full hover:bg-neutral-100"
+              className="relative p-2 text-[#212529] hover:text-[#C4A35A] transition-colors rounded-full hover:bg-[#F5F0E5]"
               aria-label="Cart"
               title="Shopping Cart"
             >
-              <ShoppingBag className="w-5 h-5" />
+              <ShoppingBag className="w-4.5 h-4.5" />
               {totalItemsCount > 0 && (
-                <span className="absolute top-0 right-0 w-4.5 h-4.5 bg-[#D9234B] text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-md">
+                <span className="absolute 0.5 top-0.5 right-0.5 w-3.5 h-3.5 bg-[#C4A35A] text-white text-[8px] font-bold rounded-full flex items-center justify-center">
                   {totalItemsCount}
                 </span>
               )}
             </button>
 
-            {/* Account Icon & Sleek Dropdown */}
-            <div className="relative">
+            {/* Desktop Only: User Account Pill Button */}
+            <div className="hidden md:block relative">
               <button
                 onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                className="flex items-center space-x-1.5 py-1.5 px-3 bg-neutral-100 hover:bg-neutral-200 text-neutral-900 border border-neutral-200 rounded-full text-xs font-semibold transition-all shadow-sm"
+                className="flex items-center space-x-1.5 py-1.5 px-3 bg-[#F5F0E5] hover:bg-[#EAE2D2] text-[#212529] border border-[#E8E0D0] rounded-full text-xs font-medium transition-all"
                 aria-label="Account Menu"
               >
-                <User className="w-4 h-4 text-[#D9234B]" />
-                <span className="hidden sm:inline max-w-[110px] truncate">
+                <User className="w-3.5 h-3.5 text-[#C4A35A]" />
+                <span className="truncate max-w-[80px]">
                   {role === 'guest' ? 'Sign In' : user.name.split(' ')[0]}
                 </span>
-                <ChevronDown className="w-3.5 h-3.5 text-neutral-500" />
+                <ChevronDown className="w-3.5 h-3.5 text-[#6B7280]" />
               </button>
 
-              {/* Ultra-Clean Sleek Dropdown */}
               {isUserMenuOpen && (
                 <div
                   onMouseLeave={() => setIsUserMenuOpen(false)}
-                  className="absolute right-0 top-11 w-72 bg-white border border-neutral-200 shadow-2xl p-4 space-y-3 text-xs z-50 rounded-xl"
+                  className="absolute right-0 top-11 w-64 bg-[#FFF9EF] border border-[#E8E0D0] shadow-2xl p-3 space-y-2 text-[11px] z-50 rounded-lg"
                 >
-                  {/* Header Box */}
-                  <div className="p-3 bg-neutral-50 border border-neutral-200/80 rounded-lg">
-                    <span className="text-[10px] uppercase font-bold tracking-widest text-[#D9234B] block">
+                  <div className="p-2.5 bg-[#FBF8F1] border border-[#E8E0D0] rounded-md">
+                    <span className="text-[9px] uppercase font-bold tracking-widest text-[#C4A35A] block">
                       {role === 'guest' ? 'Welcome to Mudra' : 'Active Account'}
                     </span>
-                    <span className="font-bold text-neutral-900 text-sm block truncate mt-0.5">
+                    <span className="font-bold text-[#212529] text-xs block truncate mt-0.5">
                       {role === 'guest' ? 'Sign in or Create Account' : user.name}
                     </span>
-                    {role !== 'guest' && (
-                      <span className="text-[11px] text-neutral-500 font-medium block capitalize mt-0.5">
-                        Tier: {role.replace('_', ' ')}
-                      </span>
-                    )}
-
-                    {/* Quick Login/Register Buttons inside header if Guest */}
                     {role === 'guest' && (
-                      <div className="grid grid-cols-2 gap-2 mt-3 pt-2 border-t border-neutral-200/60">
+                      <div className="grid grid-cols-2 gap-1.5 mt-2 pt-2 border-t border-[#E8E0D0]">
                         <Link
                           href="/login"
                           onClick={() => setIsUserMenuOpen(false)}
-                          className="py-2 px-3 bg-[#D9234B] text-white text-xs font-bold text-center rounded hover:bg-[#9E1B32] transition-colors shadow-sm"
+                          className="py-1.5 px-2 bg-[#C4A35A] text-white text-[10px] font-bold text-center rounded hover:bg-[#A8893D] transition-colors"
                         >
                           Sign In
                         </Link>
                         <Link
                           href="/register"
                           onClick={() => setIsUserMenuOpen(false)}
-                          className="py-2 px-3 bg-neutral-900 text-white text-xs font-bold text-center rounded hover:bg-neutral-800 transition-colors shadow-sm"
+                          className="py-1.5 px-2 bg-[#2C2A25] text-white text-[10px] font-bold text-center rounded hover:bg-[#3D3A33] transition-colors"
                         >
                           Register
                         </Link>
@@ -214,54 +202,21 @@ export const Navbar: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Clean Links */}
-                  <div className="space-y-1">
-                    <Link
-                      href="/account"
-                      onClick={() => setIsUserMenuOpen(false)}
-                      className="flex items-center justify-between p-2.5 hover:bg-neutral-100 font-semibold text-neutral-800 rounded-md transition-colors"
-                    >
-                      <div className="flex items-center space-x-2.5">
-                        <User className="w-4 h-4 text-neutral-600" />
-                        <span>My Account &amp; Orders</span>
-                      </div>
-                      <ChevronDown className="w-3.5 h-3.5 text-neutral-400 -rotate-90" />
+                  <div className="space-y-0.5">
+                    <Link href="/account" onClick={() => setIsUserMenuOpen(false)} className="flex items-center justify-between p-2 hover:bg-[#F5F0E5] font-medium text-[#212529] rounded transition-colors">
+                      <div className="flex items-center space-x-2"><User className="w-3.5 h-3.5 text-[#6B7280]" /><span>My Account &amp; Orders</span></div>
+                      <ChevronDown className="w-3 h-3 text-[#6B7280] -rotate-90" />
                     </Link>
-
-                    <Link
-                      href="/wishlist"
-                      onClick={() => setIsUserMenuOpen(false)}
-                      className="flex items-center justify-between p-2.5 hover:bg-neutral-100 font-semibold text-neutral-800 rounded-md transition-colors"
-                    >
-                      <div className="flex items-center space-x-2.5">
-                        <Heart className="w-4 h-4 text-[#D9234B]" />
-                        <span>Saved Wishlist</span>
-                      </div>
-                      <ChevronDown className="w-3.5 h-3.5 text-neutral-400 -rotate-90" />
+                    <Link href="/wishlist" onClick={() => setIsUserMenuOpen(false)} className="flex items-center justify-between p-2 hover:bg-[#F5F0E5] font-medium text-[#212529] rounded transition-colors">
+                      <div className="flex items-center space-x-2"><Heart className="w-3.5 h-3.5 text-[#C4A35A]" /><span>Saved Wishlist</span></div>
+                      <ChevronDown className="w-3 h-3 text-[#6B7280] -rotate-90" />
                     </Link>
-
-                    <Link
-                      href="/wholesale/dashboard"
-                      onClick={() => setIsUserMenuOpen(false)}
-                      className="flex items-center justify-between p-2.5 hover:bg-neutral-100 font-semibold text-neutral-800 rounded-md transition-colors"
-                    >
-                      <div className="flex items-center space-x-2.5">
-                        <Building2 className="w-4 h-4 text-amber-600" />
-                        <span>Wholesale B2B Portal</span>
-                      </div>
-                      <ChevronDown className="w-3.5 h-3.5 text-neutral-400 -rotate-90" />
-                    </Link>
-
                     {role !== 'guest' && (
                       <button
-                        onClick={() => {
-                          setRole('guest');
-                          setIsUserMenuOpen(false);
-                        }}
-                        className="w-full text-left flex items-center space-x-2.5 p-2.5 text-rose-600 hover:bg-rose-50 font-bold rounded-md transition-colors border-t border-neutral-100 mt-2"
+                        onClick={() => { setRole('guest'); setIsUserMenuOpen(false); }}
+                        className="w-full text-left flex items-center space-x-2 p-2 text-[#B45309] hover:bg-amber-50 font-bold rounded transition-colors border-t border-[#E8E0D0] mt-1"
                       >
-                        <LogOut className="w-4 h-4 text-rose-600" />
-                        <span>Sign Out</span>
+                        <LogOut className="w-3.5 h-3.5 text-[#B45309]" /><span>Sign Out</span>
                       </button>
                     )}
                   </div>
@@ -269,19 +224,19 @@ export const Navbar: React.FC = () => {
               )}
             </div>
 
-            {/* Wholesale Partner Button */}
-            <Link
-              href="/wholesale/apply"
-              className="hidden sm:inline-flex items-center space-x-2 px-4 py-2.5 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#9E1B32] transition-colors rounded-sm shadow-sm"
+            {/* Mobile Hamburger Button placed at the far RIGHT */}
+            <button
+              onClick={() => setIsMobileNavOpen(true)}
+              className="lg:hidden p-2 text-[#212529] hover:text-[#C4A35A] transition-colors rounded-full hover:bg-[#F5F0E5] ml-1"
+              aria-label="Open navigation menu"
             >
-              <Building2 className="w-4 h-4" />
-              <span>Wholesale Partner</span>
-            </Link>
+              <Menu className="w-5 h-5" />
+            </button>
           </div>
+
         </div>
       </header>
 
-      {/* Mobile Drawer */}
       <MobileNav
         isOpen={isMobileNavOpen}
         onClose={() => setIsMobileNavOpen(false)}

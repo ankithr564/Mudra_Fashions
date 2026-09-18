@@ -11,13 +11,13 @@ export default function AdminProductsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-neutral-300">
         <div>
-          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#D9234B]">Catalog Management</span>
+          <span className="text-xs uppercase font-bold tracking-[0.25em] text-[#C4A35A]">Catalog Management</span>
           <h1 className="font-serif text-3xl font-bold text-neutral-900 mt-1">Products ({PRODUCTS.length})</h1>
         </div>
 
         <Link
           href="/admin/products/new"
-          className="px-4 py-2.5 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 hover:bg-[#9E1B32] shadow-sm w-fit"
+          className="px-4 py-2.5 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 hover:bg-[#A8893D] shadow-sm w-fit"
         >
           <Plus className="w-4 h-4" />
           <span>+ Add Product</span>
@@ -49,7 +49,7 @@ export default function AdminProductsPage() {
                 <td className="p-3 font-bold text-neutral-900">{prod.name}</td>
                 <td className="p-3 text-neutral-600">{prod.subcategory || prod.category}</td>
                 <td className="p-3 font-bold text-neutral-900">₹{prod.price.toLocaleString('en-IN')}</td>
-                <td className="p-3 text-[#D9234B] font-bold">₹{(prod.wholesalePrice || Math.round(prod.price * 0.6)).toLocaleString('en-IN')}</td>
+                <td className="p-3 text-[#C4A35A] font-bold">₹{(prod.wholesalePrice || Math.round(prod.price * 0.6)).toLocaleString('en-IN')}</td>
                 <td className="p-3 text-neutral-700">{prod.moq || 20} pcs</td>
                 <td className="p-3">
                   <span className={`px-2 py-0.5 text-[10px] font-bold ${prod.stockCount > 100 ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>

@@ -34,7 +34,7 @@ export default function UniformsPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen pb-20 pt-8">
+    <div className="bg-[#FBF8F1] min-h-screen pb-20 pt-8">
       {/* Hero Banner */}
       <div className="relative bg-neutral-950 text-white py-20 px-4 mb-12 overflow-hidden border-b border-neutral-800">
         <div className="absolute inset-0 z-0">
@@ -62,7 +62,7 @@ export default function UniformsPage() {
             <div className="pt-4">
               <button
                 onClick={() => setIsQuoteModalOpen(true)}
-                className="px-8 py-3.5 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#9E1B32] transition-colors shadow-xl"
+                className="px-8 py-3.5 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#A8893D] transition-colors shadow-xl"
               >
                 Request Business Requirement Quote
               </button>
@@ -73,7 +73,7 @@ export default function UniformsPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Category Tabs */}
-        <div className="flex overflow-x-auto space-x-2 pb-2 border-b border-neutral-200">
+        <div className="flex overflow-x-auto space-x-2 pb-2 border-b border-[#E8E0D0]">
           {uniformCategories.map((cat) => (
             <button
               key={cat.id}
@@ -81,7 +81,7 @@ export default function UniformsPage() {
               className={`px-5 py-2.5 text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-colors ${
                 activeCategory === cat.id
                   ? 'bg-neutral-900 text-white shadow-sm'
-                  : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
+                  : 'bg-neutral-100 text-[#6B7280] hover:bg-neutral-200'
               }`}
             >
               {cat.label}
@@ -99,21 +99,21 @@ export default function UniformsPage() {
         </div>
 
         {/* Why Choose Mudra Uniforms */}
-        <div className="p-8 bg-neutral-50 border border-neutral-200 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="p-8 bg-[#FFF9EF] border border-[#E8E0D0] grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="space-y-2">
-            <ShieldCheck className="w-8 h-8 text-[#D9234B]" />
-            <h4 className="font-serif font-bold text-base text-neutral-900">Custom Logo Embroidery</h4>
-            <p className="text-xs text-neutral-600">Precision computer embroidery and screen printing for enterprise brand identity.</p>
+            <ShieldCheck className="w-8 h-8 text-[#C4A35A]" />
+            <h4 className="font-serif font-bold text-base text-[#212529]">Custom Logo Embroidery</h4>
+            <p className="text-xs text-[#6B7280]">Precision computer embroidery and screen printing for enterprise brand identity.</p>
           </div>
           <div className="space-y-2">
-            <CheckCircle2 className="w-8 h-8 text-[#D9234B]" />
-            <h4 className="font-serif font-bold text-base text-neutral-900">High-Wash Fastness</h4>
-            <p className="text-xs text-neutral-600">Tested to withstand 100+ commercial wash cycles up to 60°C without fading.</p>
+            <CheckCircle2 className="w-8 h-8 text-[#C4A35A]" />
+            <h4 className="font-serif font-bold text-base text-[#212529]">High-Wash Fastness</h4>
+            <p className="text-xs text-[#6B7280]">Tested to withstand 100+ commercial wash cycles up to 60°C without fading.</p>
           </div>
           <div className="space-y-2">
-            <FileText className="w-8 h-8 text-[#D9234B]" />
-            <h4 className="font-serif font-bold text-base text-neutral-900">Pan-India Freight Logistics</h4>
-            <p className="text-xs text-neutral-600">Direct factory-to-office dispatch with GST tax credit invoices.</p>
+            <FileText className="w-8 h-8 text-[#C4A35A]" />
+            <h4 className="font-serif font-bold text-base text-[#212529]">Pan-India Freight Logistics</h4>
+            <p className="text-xs text-[#6B7280]">Direct factory-to-office dispatch with GST tax credit invoices.</p>
           </div>
         </div>
       </div>
@@ -121,10 +121,10 @@ export default function UniformsPage() {
       {/* Quote Request Modal */}
       {isQuoteModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white text-neutral-900 max-w-lg w-full p-6 border border-neutral-200 shadow-2xl relative">
+          <div className="bg-[#FBF8F1] text-[#212529] max-w-lg w-full p-6 border border-[#E8E0D0] shadow-2xl relative">
             <button
               onClick={() => setIsQuoteModalOpen(false)}
-              className="absolute top-4 right-4 text-neutral-400 hover:text-neutral-900"
+              className="absolute top-4 right-4 text-neutral-400 hover:text-[#212529]"
             >
               <X className="w-5 h-5" />
             </button>
@@ -132,51 +132,51 @@ export default function UniformsPage() {
             {formSubmitted ? (
               <div className="text-center py-8 space-y-3">
                 <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
-                <h3 className="font-serif font-bold text-xl text-neutral-900">Enquiry Submitted!</h3>
-                <p className="text-xs text-neutral-600">
+                <h3 className="font-serif font-bold text-xl text-[#212529]">Enquiry Submitted!</h3>
+                <p className="text-xs text-[#6B7280]">
                   Our B2B corporate uniform specialist will contact your organization within 2 hours.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div>
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#D9234B]">B2B Requirement</span>
-                  <h3 className="font-serif font-bold text-xl text-neutral-900">Request Uniform Quote</h3>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#C4A35A]">B2B Requirement</span>
+                  <h3 className="font-serif font-bold text-xl text-[#212529]">Request Uniform Quote</h3>
                 </div>
 
                 <div className="space-y-3 text-xs">
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">Company / Institution Name *</label>
+                    <label className="block font-bold text-[#212529] mb-1">Company / Institution Name *</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Apollo Hospitals / Leela Palace"
-                      className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <label className="block font-bold text-neutral-700 mb-1">Contact Person *</label>
+                      <label className="block font-bold text-[#212529] mb-1">Contact Person *</label>
                       <input
                         type="text"
                         required
                         placeholder="Full Name"
-                        className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                        className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                       />
                     </div>
                     <div>
-                      <label className="block font-bold text-neutral-700 mb-1">Phone Number *</label>
+                      <label className="block font-bold text-[#212529] mb-1">Phone Number *</label>
                       <input
                         type="tel"
                         required
                         placeholder="+91 98765 43210"
-                        className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                        className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">Estimated Order Quantity (Pieces)</label>
-                    <select className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]">
+                    <label className="block font-bold text-[#212529] mb-1">Estimated Order Quantity (Pieces)</label>
+                    <select className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]">
                       <option>50 - 200 Pieces</option>
                       <option>200 - 500 Pieces</option>
                       <option>500 - 1,000 Pieces</option>
@@ -184,18 +184,18 @@ export default function UniformsPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block font-bold text-neutral-700 mb-1">Specific Requirements</label>
+                    <label className="block font-bold text-[#212529] mb-1">Specific Requirements</label>
                     <textarea
                       rows={3}
                       placeholder="Specify sizes, colors, embroidery requirements..."
-                      className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#D9234B]"
+                      className="w-full p-2.5 border border-neutral-300 focus:outline-none focus:border-[#C4A35A]"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 bg-[#D9234B] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 hover:bg-[#9E1B32]"
+                  className="w-full py-3 bg-[#C4A35A] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 hover:bg-[#A8893D]"
                 >
                   <Send className="w-4 h-4" />
                   <span>Submit Requirement Quote</span>
